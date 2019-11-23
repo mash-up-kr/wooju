@@ -13,7 +13,7 @@ class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
     fun setData(newData: List<String>?) {
         if (newData != null) {
             data.clear()
-            data.addAll(newData.map { it + "월" })
+            data.addAll(newData)
             notifyDataSetChanged()
         }
     }

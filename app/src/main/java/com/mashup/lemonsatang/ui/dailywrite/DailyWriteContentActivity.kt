@@ -1,8 +1,9 @@
-package com.mashup.lemonsatang
+package com.mashup.lemonsatang.ui.dailywrite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.afollestad.materialdialogs.MaterialDialog
+import com.mashup.lemonsatang.R
 import kotlinx.android.synthetic.main.activity_daily_write_content.*
 
 class DailyWriteContentActivity : AppCompatActivity() {

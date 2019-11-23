@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityMainBinding
+import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -26,7 +27,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         initRecyclerView()
         initEvent()
         loadData()
-
     }
 
     private fun initRecyclerView() {
@@ -34,17 +34,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             adapter = entryPointerAdapter
             scrollToPosition(10)
 
-            val snapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
+            PagerSnapHelper().attachToRecyclerView(this)
         }
     }
 
     private fun initEvent() {
-//        binding.
+        binding.fabAdd.setOnClickListener {
+            startActivity(Intent(this, DailyWriteActivity::class.java))
+        }
     }
 
+    //테스트 데이터 삽입
     private fun loadData() {
-        val newData = listOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")
+        val newData =
+            listOf("1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월")
         entryPointerAdapter.setData(newData)
     }
 
