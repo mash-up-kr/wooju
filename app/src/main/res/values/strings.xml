@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">lemonsatang</string>
+<<<<<<< HEAD
     <string name="title_date">11월 22일 수요일</string>
 
     <!-- main_home-->
     <string name="main_reminder">리마인더</string>
+=======
+    <string name="title_date"><u>11월 22일 수요일</u></string>
+>>>>>>> feature/4
 </resources>
