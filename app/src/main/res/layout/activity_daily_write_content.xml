@@ -44,6 +44,7 @@
     <EditText
         android:id="@+id/et_daily_content"
         android:hint="edittext"
+        android:gravity="top"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:ems="10"

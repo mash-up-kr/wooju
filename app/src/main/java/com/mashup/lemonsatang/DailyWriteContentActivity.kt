@@ -13,8 +13,8 @@ class DailyWriteContentActivity : AppCompatActivity() {
 
         tv_submit.setOnClickListener {
             val builder = MaterialDialog(this).show{
-                message (text = "Dialog")
-                positiveButton (text="작성 완료되었습니다.")
+                message (text = "작성 완료되었습니다.")
+                positiveButton (text="확인")
             }
         }
 
