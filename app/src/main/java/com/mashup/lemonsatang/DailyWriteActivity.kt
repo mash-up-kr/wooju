@@ -15,12 +15,8 @@ class DailyWriteActivity : AppCompatActivity() {
         et_daily_content.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
                 val intent = Intent(this, DailyWriteContentActivity::class.java)
-                startActivity(intent);
-                overridePendingTransition(R.anim.rightin_activity, R.anim.not_move_activity);
-
-                overridePendingTransition(R.anim.not_move_activity, R.anim.rightout_activity);
-
-                overridePendingTransition(R.anim.slide_down, R.anim.slide_up)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_bottom_in, R.anim.slide_top_out)
                 et_daily_content.clearFocus()
             }
         }
