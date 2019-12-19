@@ -5,13 +5,13 @@ import android.os.Bundle
 import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityRemindListBinding
-import com.mashup.lemonsatang.ui.dailyview.DailyViewActivity
+import com.mashup.lemonsatang.remindWrite.RemindWriteActivity
 import com.mashup.lemonsatang.ui.vo.RemindListItemVo
 
 class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.activity_remind_list) {
 
     private val remindListAdapter : RemindListAdapter by lazy {
-        RemindListAdapter{clickEventCallback()}
+        RemindListAdapter{clickEventCallback(it)}
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +21,13 @@ class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.acti
 
     }
 
-    private fun clickEventCallback(){
-        startActivity(Intent(this, DailyViewActivity::class.java))
+    private fun clickEventCallback(position : Int){
+        val data = remindListAdapter.getDataAt(position)
+
+        RemindListAdapter.startDate = data.start
+        RemindListAdapter.date = remindListAdapter.getRemindDate(data.start, data.end)
+        startActivity(Intent(this, RemindWriteActivity::class.java))
+
     }
 
     private fun initRecyclerView() {
