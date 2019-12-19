@@ -6,4 +6,11 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+    <color name="colorPrimaryGray"> #7a7a7a</color>
+    <color name="colorPrimaryBlue"> #4653ff</color>
+    <color name="colorPrimaryRed"> #ff4141</color>
+    <color name="colorPrimaryGreen"> #209944</color>
+
+
 </resources>

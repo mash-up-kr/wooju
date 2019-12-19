@@ -4,4 +4,10 @@
 
     <!-- main_home-->
     <string name="main_reminder">리마인더</string>
+
+    <!--remind_list-->
+    <string name="remind_list_month">%s월</string>
+
+    <!--toolbar_remind_list-->
+    <string name="toolbar_remind_list_title">리마인드</string>
 </resources>
