@@ -9,14 +9,12 @@
     <string name="remind_list_month">%s월</string>
 
     <!--remind_write-->
-    <string name="remind_write_title">화나는 일이 많으셨나봐요!</string>
-    <string name="remind_write_content">이번주에 대해서 써보세요!!!</string>
-    
-    <!--remind_write_content-->
-    <string name="remind_write_c_title">화나는 일이 많으셨나봐요!</string>
-    <string name="remind_write_c_content">이번주를 쓰세요</string>
+    <string name="remind_write_content">리마인드를 해주세요:)</string>
+    <string name="remind_write_emotion_count">%d개</string>
+    <string name="remind_write_edt_btn">수정</string>
+    <string name="remind_write_del_btn">삭제</string>
 
-    <!--toolbar_remind_list-->
+    <!--toolbar_remind_write-->
     <string name="toolbar_remind_title">리마인드</string>
-    <string name="toolbar_remind_dialog_msg">"11월 %d째주 리마인드가 완료되었어요."</string>
+    <string name="toolbar_remind_dialog_msg">"%1$s %2$s째주 리마인드가 완료되었어요."</string>
 </resources>

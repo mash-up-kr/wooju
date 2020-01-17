@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".remindWrite.RemindWriteActivity">
+    tools:context=".ui.remindWrite.RemindWriteActivity">
 
     <include
         android:id="@+id/include"
@@ -15,181 +21,39 @@
         android:id="@+id/tvDateRemindWrite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="19dp"
         android:textColor="@color/white"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
-
-    <HorizontalScrollView
-        android:id="@+id/scRemindWrite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:scrollbars="none"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateRemindWrite">
-
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:id="@+id/rvRemindWrite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/ivRedRemindWrite"
-                    android:layout_width="110dp"
-                    android:layout_height="169dp"
-                    android:background="@color/colorPrimaryRed" />
-
-                <TextView
-                    android:id="@+id/tvFirstRemindWrite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ivRedRemindWrite"
-                    android:layout_marginTop="9dp"
-                    android:text="1st"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ivRedRemindWrite"
-                    android:layout_toEndOf="@id/tvFirstRemindWrite"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginStart="6dp"
-                    android:text="3개" />
-
-                <ImageView
-                    android:id="@+id/ivBlueRemindWrite"
-                    android:layout_width="82dp"
-                    android:layout_height="126dp"
-                    android:layout_alignBottom="@id/ivRedRemindWrite"
-                    android:layout_toEndOf="@id/ivRedRemindWrite"
-                    android:layout_marginStart="15dp"
-                    android:background="@color/colorPrimaryBlue" />
-
-                <TextView
-                    android:id="@+id/tvSecondRemindWrite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/ivRedRemindWrite"
-                    android:layout_below="@id/ivBlueRemindWrite"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="9dp"
-                    android:text="2st"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ivBlueRemindWrite"
-                    android:layout_toEndOf="@id/tvSecondRemindWrite"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginStart="6dp"
-                    android:text="2개" />
-
-                <ImageView
-                    android:id="@+id/ivGreenRemindWrite"
-                    android:layout_width="56dp"
-                    android:layout_height="86dp"
-                    android:layout_alignBottom="@id/ivBlueRemindWrite"
-                    android:layout_toEndOf="@id/ivBlueRemindWrite"
-                    android:layout_marginStart="21dp"
-                    android:background="@color/colorPrimaryGreen" />
-
-                <TextView
-                    android:id="@+id/tvThirdRemindWrite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/ivBlueRemindWrite"
-                    android:layout_below="@id/ivGreenRemindWrite"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginTop="9dp"
-                    android:text="3st"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ivGreenRemindWrite"
-                    android:layout_toEndOf="@id/tvThirdRemindWrite"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginStart="6dp"
-                    android:text="1개" />
-
-                <ImageView
-                    android:id="@+id/ivYellowRemindWrite"
-                    android:layout_width="55dp"
-                    android:layout_height="65dp"
-                    android:layout_alignBottom="@id/ivGreenRemindWrite"
-                    android:layout_toEndOf="@id/ivGreenRemindWrite"
-                    android:layout_marginStart="21dp"
-                    android:background="#fff047" />
-
-                <TextView
-                    android:id="@+id/tvFourthRemindWrite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/ivGreenRemindWrite"
-                    android:layout_below="@id/ivYellowRemindWrite"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginTop="9dp"
-                    android:text="4st"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ivYellowRemindWrite"
-                    android:layout_toEndOf="@id/tvFourthRemindWrite"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginStart="6dp"
-                    android:text="0개" />
-            </RelativeLayout>
-        </ScrollView>
-    </HorizontalScrollView>
-
-    <TextView
-        android:id="@+id/tvTitleRemindWrite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/remind_write_title"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scRemindWrite" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRemindWrite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateRemindWrite"/>
 
     <EditText
         android:id="@+id/etContentRemindWrite"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="44dp"
         android:layout_marginStart="32dp"
+        android:layout_marginEnd="28dp"
         android:hint="@string/remind_write_content"
+        android:textSize="14sp"
         android:gravity="top"
-        android:textColorHint="@color/white"
-        android:inputType="text"
+        android:textColorHint="@color/greyscale50"
+        android:inputType="textMultiLine"
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleRemindWrite"
+        app:layout_constraintTop_toBottomOf="@+id/rvRemindWrite"
         />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
