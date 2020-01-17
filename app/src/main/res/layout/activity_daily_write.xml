@@ -7,25 +7,74 @@
     tools:context=".DailyWriteActivity"
     android:background="@android:color/background_dark">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/daily_write_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="44dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_main_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/btn_main_back"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true">
+            </androidx.appcompat.widget.AppCompatImageView>
+
+            <TextView
+                android:id="@+id/daily_write_month"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/daily_write_month"
+                android:textSize="22dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/background_light"/>
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="완료"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/background_light"
+                android:textSize="20dp"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_daily_write"
+        android:layout_width="match_parent"
+        android:layout_height="238dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_write_toolbar" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_daily_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/title_date"
-        android:layout_marginLeft="20dp"
+        android:textColor="@android:color/background_light"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_daily_write">
 
     </TextView>
 
@@ -34,14 +83,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ems="10"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:hint="오늘 하루 어떠셨나요?"
-        android:inputType="textPersonName"
-        android:textColorHint="@android:color/background_light"
+        android:background="#131415"
+        android:layout_marginTop="17dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="@string/daily_write_hint"
+        android:textColor="#89898a"
+        android:gravity="top"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_daily_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
