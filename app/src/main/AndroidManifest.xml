@@ -9,14 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".DailyWriteContentActivity"></activity>
-        <activity android:name=".DailyWriteActivity">
+        <activity android:name=".ui.dailyview.DailyViewActivity"/>
+        <activity android:name=".ui.monthlylist.MonthlyListActivity" />
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.dailywrite.DailyWriteContentActivity" />
+        <activity android:name=".ui.dailywrite.DailyWriteActivity" />
     </application>
 
 </manifest>
