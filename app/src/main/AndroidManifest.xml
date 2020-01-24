@@ -24,6 +24,7 @@
         <activity android:name=".ui.dailywrite.DailyWriteActivity" />
         <activity android:name=".ui.remindWrite.RemindWriteActivity"/>
         <activity android:name =".ui.remindWrite.RemindWriteContentActivity"/>
+        <activity android:name=".ui.settings.SettingsActivity"/>
     </application>
 
 </manifest>
