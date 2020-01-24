@@ -8,6 +8,8 @@ import com.mashup.lemonsatang.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityMainBinding
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity
+import com.mashup.lemonsatang.ui.remindlist.RemindListActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
@@ -27,6 +29,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         initRecyclerView()
         initEvent()
         loadData()
+        tv_reminder.setOnClickListener {
+            startActivity(Intent(this, RemindListActivity::class.java))
+        }
     }
 
     private fun initRecyclerView() {

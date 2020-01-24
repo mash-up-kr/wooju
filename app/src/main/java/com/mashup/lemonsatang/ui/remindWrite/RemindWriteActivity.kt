@@ -41,7 +41,6 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
     private fun init(){
         tvDateRemindWrite.text= RemindListActivity.date
         etContentRemindWrite.setText(RemindListActivity.content)
-        etContentClick()
         setToolbar()
         btnBackClick()
     }
@@ -53,13 +52,15 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
     }
 
     private fun setToolbar(){
-        if(RemindListActivity.content == getString(R.string.remind_write_content)){
-
+        if(RemindListActivity.isBlank){
+            etContentClick()
         }else{
             btnEditToolbarRemind.visibility = View.VISIBLE
             btnEditToolbarRemind.setOnClickListener {
                 showBottomDialog()
             }
+            etContentRemindWrite.isClickable = false
+            etContentRemindWrite.isFocusable =false
         }
     }
 
@@ -96,10 +97,8 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
         }
     }
 
-    private fun btnBackClick(){
-        btnBackToolbarRemind.setOnClickListener {
-            onBackPressed()
-        }
+    private fun btnBackClick() = btnBackToolbarRemind.setOnClickListener {
+        onBackPressed()
     }
 
     private fun showBottomDialog(){
@@ -115,7 +114,7 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
         val btnDelete = dialog.btnDeleteRemindWrite
 
         btnEdit.setOnClickListener {
-            toast("수정동작")
+            startActivity(Intent(this, RemindWriteContentActivity::class.java))
         }
         btnDelete.setOnClickListener {
             showDeleteDialog(dialog)

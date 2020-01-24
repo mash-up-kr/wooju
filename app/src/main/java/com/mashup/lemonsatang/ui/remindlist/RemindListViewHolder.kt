@@ -1,6 +1,6 @@
 package com.mashup.lemonsatang.ui.remindlist
 
-import android.util.Log
+import android.graphics.drawable.GradientDrawable
 import android.util.SparseIntArray
 import android.view.View
 import android.view.ViewGroup
@@ -25,25 +25,24 @@ class RemindListViewHolder(
         binding.remindListItem = item
     }
 
-    fun setMonth(b : Boolean){
-        when(b){
-            true -> itemView.tvMonthItemRemindList.visibility = View.VISIBLE
-            false-> itemView.tvMonthItemRemindList.visibility = View.GONE
-        }
-    }
-
     fun setColor(colorIdx : Int){
         initColorList()
 
         val color = colorArray.get(colorArray.keyAt(colorIdx))
-        itemView.llRemindList.setBackgroundColor(ContextCompat.getColor(itemView.context,color))
+        val bg = itemView.ivEmotionColorRemindList.background as GradientDrawable
+        bg.setColor(ContextCompat.getColor(itemView.context,color))
+
     }
 
     private fun initColorList(){
-        colorArray.append(0, R.color.colorPrimaryGray)
-        colorArray.append(1, R.color.colorPrimaryBlue)
-        colorArray.append(2, R.color.colorPrimaryGreen)
-        colorArray.append(3, R.color.colorPrimaryRed)
+        colorArray.append(0, R.color.pleasure)
+        colorArray.append(1, R.color.happiness)
+        colorArray.append(2, R.color.tranguility)
+        colorArray.append(3, R.color.satisfaction)
+        colorArray.append(4, R.color.angro)
+        colorArray.append(5, R.color.depressed)
+        colorArray.append(6, R.color.tired)
+        colorArray.append(7, R.color.sadness)
     }
 
 }
