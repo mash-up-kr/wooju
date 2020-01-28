@@ -14,7 +14,6 @@ import com.mashup.lemonsatang.ui.vo.*
 import kotlinx.android.synthetic.main.activity_remind_write.*
 import kotlinx.android.synthetic.main.bottom_sheet_remind_write.*
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
-import org.jetbrains.anko.textColor
 import org.jetbrains.anko.toast
 
 class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.activity_remind_write) {
@@ -115,7 +114,7 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
         val btnDelete = dialog.btnDeleteRemindWrite
 
         btnEdit.setOnClickListener {
-            toast("수정동작")
+            startActivity(Intent(this, RemindWriteContentActivity::class.java))
         }
         btnDelete.setOnClickListener {
             showDeleteDialog(dialog)

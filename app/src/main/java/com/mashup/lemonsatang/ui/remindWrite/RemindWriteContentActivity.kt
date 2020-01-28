@@ -1,9 +1,7 @@
 package com.mashup.lemonsatang.ui.remindWrite
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.afollestad.materialdialogs.MaterialDialog
 import com.mashup.lemonsatang.R
@@ -11,7 +9,6 @@ import com.mashup.lemonsatang.ui.remindlist.RemindDate
 import com.mashup.lemonsatang.ui.remindlist.RemindListActivity
 import kotlinx.android.synthetic.main.activity_remind_write_content.*
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
-
 
 class RemindWriteContentActivity : AppCompatActivity(), RemindDate{
 
@@ -25,6 +22,7 @@ class RemindWriteContentActivity : AppCompatActivity(), RemindDate{
     private fun init(){
         etRemindWriteContent.setText(RemindListActivity.content)
     }
+
     private fun toolbarClick(){
         tvCompleteToolbarRemind.visibility = View.VISIBLE
         tvCompleteToolbarRemind.setOnClickListener {

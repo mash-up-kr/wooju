@@ -22,8 +22,6 @@
         android:gravity="top"
         android:textSize="14sp"
         android:textColor="@android:color/background_light"
-        android:hint="@string/remind_write_content"
-        android:textColorHint="@color/white"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"

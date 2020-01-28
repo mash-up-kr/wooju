@@ -6,6 +6,7 @@ import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityRemindListBinding
 import com.mashup.lemonsatang.ui.remindWrite.RemindWriteActivity
+import com.mashup.lemonsatang.ui.vo.RemindList
 import com.mashup.lemonsatang.ui.vo.RemindListItemVo
 import com.mashup.lemonsatang.ui.vo.RemindListResponse
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
@@ -16,11 +17,14 @@ class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.acti
     private val remindListListAdapter : RemindListAdapter by lazy {
         RemindListAdapter{clickEventCallback(it)}
     }
-    private val response: ArrayList<RemindListResponse> by lazy{
-        ArrayList<RemindListResponse>()
-    }
+//    private val response: RemindListResponse by lazy{
+//        RemindListResponse(remindList)
+//    }
     private val item: ArrayList<RemindListItemVo>  by lazy {
         ArrayList<RemindListItemVo>()
+    }
+    private val remindList : ArrayList<RemindList> by lazy{
+        ArrayList<RemindList>()
     }
     private var type = 0
 
@@ -63,12 +67,12 @@ class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.acti
     private fun loadData() {
         addData()
 
-        for (i in 0 until response.size) {
-            val cur = getMonth(response[i].start)
+        for (i in 0 until remindList.size) {
+            val cur = getMonth(remindList[i].start)
             var next = ""
 
-            if(i < response.size-1){
-                next = getMonth(response[i + 1].start)
+            if(i < remindList.size-1){
+                next = getMonth(remindList[i + 1].start)
             }
 
             setType(i)
@@ -91,54 +95,53 @@ class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.acti
     }
 
     private fun responseToItem(i : Int){
-        response[i].let{
+        remindList[i].let{
             item.add(RemindListItemVo(type, getMonth(it.start),getRemindDate(it.start, it.end),
                 it.contents, it.emotionColor, it.start))
         }
     }
 
-    private fun addMonth(i : Int){
-        item.add(RemindListItemVo(1,getMonth(response[i+1].start),null, null, null, null))
-    }
+    private fun addMonth(i : Int)=item.add(RemindListItemVo(1,getMonth(remindList[i+1].start),null, null, null, null))
+
 
     private fun setType(i: Int){
-        if(response[i].contents.isBlank()) {
+        if(remindList[i].contents.isBlank()) {
             type = 2
-            response[i].contents = getString(R.string.remind_write_content)
+            remindList[i].contents = getString(R.string.remind_write_content)
         } else type = 0
 
     }
 
     private fun addData(){
-        response.add(
-            RemindListResponse(
+        remindList.add(
+            RemindList(
                 "2019-11-04T15:54:07.292Z", "2019-11-10T15:54:07.292Z",
                 "Mash-Up 사람들 많이 만났다. 다음 주도 다음 달도 계속 많이 만날 예정^_________^", 3
             )
         )
-        response.add(
-            RemindListResponse(
+        remindList.add(
+            RemindList(
                 "2019-11-11T15:54:07.292Z", "2019-11-17T15:54:07.292Z",
-                "이번주는 정말 나른하게 살았다. 기분은 좋은데 뭔가 안한 것 같아서 찝찝~ 다음 주는 열심히 해야징", 1
+                "이번주는 정말 나른하게 살았다. 기분은 좋은데 뭔가 안한 것 같아서 찝찝~ 다음 주는 열심히 해야징", 2
             )
         )
-        response.add(
-            RemindListResponse(
+        remindList.add(
+            RemindList(
                 "2019-11-18T15:54:07.292Z", "2019-11-23T15:54:07.292Z",
-                "이번주는 정말 나른하게 살았다. 기분은 좋은데 뭔가 안한 것 같아서 찝찝~ 다음 주는 열심히 해야징", 1
+                "열심히 살자!", 1
             )
         )
-        response.add(
-            RemindListResponse(
+        remindList.add(
+            RemindList(
                 "2019-11-24T15:54:07.292Z", "2019-11-30T15:54:07.292Z",
-                "", 0
+                "", null
             )
         )
 
-        response.add(
-            RemindListResponse(
+        remindList.add(
+            RemindList(
                 "2019-12-01T15:54:07.292Z", "2019-12-07T15:54:07.292Z",
-                "", 0
+                "", null
             )
         )
 
