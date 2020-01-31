@@ -40,7 +40,6 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
 
     private fun init(){
         tvDateRemindWrite.text= RemindListActivity.date
-        etContentRemindWrite.setText(RemindListActivity.content)
         setToolbar()
         btnBackClick()
     }
@@ -52,9 +51,10 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
     }
 
     private fun setToolbar(){
-        if(RemindListActivity.isBlank){
+        if(RemindListActivity.isBlank)
             etContentClick()
-        }else{
+        else{
+            etContentRemindWrite.setText(RemindListActivity.content)
             btnEditToolbarRemind.visibility = View.VISIBLE
             btnEditToolbarRemind.setOnClickListener {
                 showBottomDialog()

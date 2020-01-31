@@ -9,6 +9,7 @@ import com.mashup.lemonsatang.ui.remindlist.RemindDate
 import com.mashup.lemonsatang.ui.remindlist.RemindListActivity
 import kotlinx.android.synthetic.main.activity_remind_write_content.*
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
+import org.jetbrains.anko.toast
 
 class RemindWriteContentActivity : AppCompatActivity(), RemindDate{
 
@@ -20,7 +21,15 @@ class RemindWriteContentActivity : AppCompatActivity(), RemindDate{
     }
 
     private fun init(){
-        etRemindWriteContent.setText(RemindListActivity.content)
+       setEtContent()
+    }
+
+    private fun setEtContent(){
+        if(RemindListActivity.isBlank){
+
+        }else{
+            etRemindWriteContent.setText(RemindListActivity.content)
+        }
     }
 
     private fun toolbarClick(){
