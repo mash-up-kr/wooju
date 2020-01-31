@@ -8,6 +8,7 @@ import com.mashup.lemonsatang.databinding.ActivityMonthlyListBinding
 import com.mashup.lemonsatang.ui.dailyview.DailyViewActivity
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import com.mashup.lemonsatang.ui.main.EntryPointerAdapter
+import com.mashup.lemonsatang.ui.main.MainActivity
 import com.mashup.lemonsatang.ui.vo.MonthlyListItemVo
 import kotlinx.android.synthetic.main.activity_monthly_list.*
 
@@ -45,7 +46,8 @@ class MonthlyListActivity :
     }
 
     private fun setToolbarMonth(){
-        tv_monthly_list_month.text = EntryPointerAdapter.month
+        var month = intent.getIntExtra(MainActivity.CURR_MONTH_KEY,-1) + 1
+        tv_monthly_list_month.text = "${month}월"
     }
 
     private fun clickBtnBack(){

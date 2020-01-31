@@ -1,5 +1,6 @@
 package com.mashup.lemonsatang.ui.main
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.lemonsatang.R
@@ -10,9 +11,6 @@ class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
     RecyclerView.Adapter<EntryPointerAdapter.EntryPointerViewHolder>() {
     private val data = mutableListOf<String>()
 
-    companion object{
-        var month = ""
-    }
     fun setData(newData: List<String>?) {
         if (newData != null) {
             data.clear()
@@ -41,7 +39,6 @@ class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
 
         fun bind(item: String) {
             binding.tvCalendar.text = item
-            month = binding.tvCalendar.text.toString()
         }
     }
 }
