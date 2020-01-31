@@ -29,7 +29,7 @@
             </androidx.appcompat.widget.AppCompatImageView>
 
             <TextView
-                android:id="@+id/daily_write_month"
+                android:id="@+id/tv_daily_write_month"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/daily_write_month"
@@ -40,7 +40,7 @@
                 android:textColor="@android:color/background_light"/>
 
             <TextView
-                android:id="@+id/tv_submit"
+                android:id="@+id/btn_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="완료"
@@ -54,10 +54,10 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
         android:id="@+id/rv_daily_write"
         android:layout_width="match_parent"
-        android:layout_height="238dp"
+        android:layout_height="270dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,10 +67,11 @@
         android:id="@+id/tv_daily_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="@string/title_date"
+        android:text="@string/daily_write_title_date"
         android:textColor="@android:color/background_light"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +87,7 @@
         android:background="#131415"
         android:layout_marginTop="17dp"
         android:layout_marginHorizontal="24dp"
+        android:inputType="textMultiLine"
         android:text="@string/daily_write_hint"
         android:textColor="#89898a"
         android:gravity="top"
