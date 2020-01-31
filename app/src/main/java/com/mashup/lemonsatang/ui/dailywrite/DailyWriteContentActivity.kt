@@ -21,11 +21,11 @@ class DailyWriteContentActivity : AppCompatActivity() {
     }
 
     private fun init(){
-        btnSubmitClick()
-        btnBackClick()
+        clickBtnSubmit()
+        clickBtnBack()
     }
 
-    private fun btnSubmitClick(){
+    private fun clickBtnSubmit(){
         tv_submit.setOnClickListener {
             var intent = Intent(this, DailyWriteActivity::class.java)
             var dailyContent = et_daily_content.text.toString()
@@ -41,7 +41,7 @@ class DailyWriteContentActivity : AppCompatActivity() {
         }
     }
 
-    private fun btnBackClick(){
+    private fun clickBtnBack(){
         btn_cancel.setOnClickListener {
             onBackPressed()
         }

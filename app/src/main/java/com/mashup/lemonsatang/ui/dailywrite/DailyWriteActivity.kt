@@ -31,10 +31,10 @@ class DailyWriteActivity : AppCompatActivity() {
     }
 
     private fun init(){
-        etDailyContentFocus()
-        btnBackClick()
-        btnSubmitClick()
-        tvDailyDateClick()
+        focusOnEtDailyContent()
+        clickBtnBack()
+        clickBtnSubmit()
+        clickTvDailyDate()
         setRvAdapter()
     }
 
@@ -48,7 +48,7 @@ class DailyWriteActivity : AppCompatActivity() {
     }
 
     @TargetApi(Build.VERSION_CODES.N)
-    private fun tvDailyDateClick(){
+    private fun clickTvDailyDate(){
         //date picker
         val calendar = Calendar.getInstance()
 
@@ -83,7 +83,7 @@ class DailyWriteActivity : AppCompatActivity() {
         return dayOfWeek
     }
 
-    private fun etDailyContentFocus(){
+    private fun focusOnEtDailyContent(){
         et_daily_content.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 val intent = Intent(this, DailyWriteContentActivity::class.java)
@@ -97,13 +97,13 @@ class DailyWriteActivity : AppCompatActivity() {
         }
     }
 
-    private fun btnBackClick(){
+    private fun clickBtnBack(){
         btn_main_back.setOnClickListener {
             onBackPressed()
         }
     }
 
-    private fun btnSubmitClick(){
+    private fun clickBtnSubmit(){
 
         btn_submit.setOnClickListener {
             //날짜 저장
