@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".ui.dailyview.DailyViewActivity"/>
+        <activity android:name=".ui.remindlist.RemindListActivity"/>
+        <activity android:name=".ui.dailyview.DailyViewActivity" />
         <activity android:name=".ui.monthlylist.MonthlyListActivity" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
@@ -21,6 +22,9 @@
         </activity>
         <activity android:name=".ui.dailywrite.DailyWriteContentActivity" />
         <activity android:name=".ui.dailywrite.DailyWriteActivity" />
+        <activity android:name=".ui.remindWrite.RemindWriteActivity"/>
+        <activity android:name =".ui.remindWrite.RemindWriteContentActivity"/>
+        <activity android:name=".ui.settings.SettingsActivity"/>
     </application>
 
 </manifest>

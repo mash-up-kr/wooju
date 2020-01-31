@@ -7,4 +7,27 @@
     <string name="monthly_list_month">11월</string>
     <string name="daily_write_title_date"><u>11월 21일 수요일</u></string>
     <string name="main_reminder">리마인더</string>
+
+    <!--remind_list-->
+    <string name="remind_list_month">%s월</string>
+
+    <!--remind_write-->
+    <string name="remind_write_content">리마인드를 해주세요:)</string>
+    <string name="remind_write_emotion_count">%d개</string>
+    <string name="remind_write_edt_btn">수정</string>
+    <string name="remind_write_del_btn">삭제</string>
+
+    <!--toolbar_remind_write-->
+    <string name="toolbar_remind_title">리마인드</string>
+    <string name="toolbar_settings_title">설정</string>
+    <string name="toolbar_remind_dialog_msg">"%1$s %2$s째주 리마인드가 완료되었어요."</string>
+
+    <!--settins-->
+    <string name="alarm_settings">알람</string>
+    <string name="license_settings">라이센스</string>
+    <string name="donate_settings">기부하기</string>
+    <string name="rate_settings">앱 평가하기</string>
+    <string name="version_settings">버전 정보</string>
+    <string name="version_num_settings">1.1.0</string>
+    <string name="logout_settings">로그아웃</string>
 </resources>
