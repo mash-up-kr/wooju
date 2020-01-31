@@ -6,4 +6,26 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+    <color name="tranguility">#00ff63</color>
+    <color name="tired">#bcbcbc</color>
+    <color name="sadness">#3000ff</color>
+    <color name="greyscale100">#131415</color>
+    <color name="greyscae90">#2a2b2c</color>
+    <color name="greyscale80">#424344</color>
+    <color name="greyscale70">#595a5b</color>
+    <color name="greyscae60">#89898a</color>
+    <color name="greyscale50">#9b9b9b</color>
+    <color name="greyscale40">#b8b8b8</color>
+    <color name="greyscale30">#d0d0d0</color>
+    <color name="greyscale20">#e7e7e7</color>
+    <color name="greyscale10">#f3f3f3</color>
+    <color name="greyscale0">#fafafa</color>
+    <color name="happiness">#ffde00</color>
+    <color name="pleasure">#ff5200</color>
+    <color name="satisfaction">#ff008e</color>
+    <color name="angro">#ff0000</color>
+    <color name="depressed">#7b00ff</color>
+
+
 </resources>
