@@ -16,6 +16,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         super.onCreate(savedInstanceState)
 
         initView()
+        initEvent()
         initKakaoLogin()
     }
 
@@ -27,6 +28,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         with(binding.lottieLogin) {
             repeatCount = LottieDrawable.INFINITE
             playAnimation()
+        }
+    }
+
+    private fun initEvent(){
+        binding.btKakao.setOnClickListener {
+            binding.kakaoLogin.performClick()
         }
     }
 

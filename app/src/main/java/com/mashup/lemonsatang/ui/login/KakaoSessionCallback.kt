@@ -21,13 +21,12 @@ class KakaoSessionCallback(val redirect: () -> Unit) : ISessionCallback {
             override fun onSuccess(result: MeV2Response?) {
                 Log.d("test", "accessToken : ${Session.getCurrentSession().tokenInfo.accessToken}")
                 Log.d("test", "refreshToken : ${Session.getCurrentSession().tokenInfo.refreshToken}")
+                redirect()
             }
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
                 Log.d("test", "onSessionClosed.")
             }
         })
-
-        redirect()
     }
 }
