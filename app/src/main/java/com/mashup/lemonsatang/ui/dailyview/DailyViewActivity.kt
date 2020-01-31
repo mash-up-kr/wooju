@@ -21,11 +21,11 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
     }
 
     private fun init(){
-        btnEditClick()
-        btnBackClick()
+        clickBtnEdit()
+        clickBtnBack()
     }
 
-    private fun btnEditClick(){
+    private fun clickBtnEdit(){
         daily_view_btn_edit.setOnClickListener {
             val dialogView = layoutInflater.inflate(R.layout.bottom_sheet_daily_edit, null)
             val dialog = BottomSheetDialog(this)
@@ -56,7 +56,7 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
         }
     }
 
-    private fun btnBackClick(){
+    private fun clickBtnBack(){
         btn_main_back.setOnClickListener {
             onBackPressed()
         }

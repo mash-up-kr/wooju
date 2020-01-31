@@ -8,6 +8,7 @@ import com.mashup.lemonsatang.databinding.ActivityMonthlyListBinding
 import com.mashup.lemonsatang.ui.dailyview.DailyViewActivity
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import com.mashup.lemonsatang.ui.vo.MonthlyListItemVo
+import kotlinx.android.synthetic.main.activity_monthly_list.*
 
 class MonthlyListActivity :
     BaseActivity<ActivityMonthlyListBinding>(R.layout.activity_monthly_list) {
@@ -34,6 +35,13 @@ class MonthlyListActivity :
 
         initRecyclerView()
         loadData()
+        clickBtnBack()
+    }
+
+    private fun clickBtnBack(){
+        btn_monthly_list_back.setOnClickListener {
+            onBackPressed()
+        }
     }
 
 

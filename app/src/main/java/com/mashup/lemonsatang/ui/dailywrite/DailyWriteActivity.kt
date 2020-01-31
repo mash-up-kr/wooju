@@ -35,10 +35,10 @@ class DailyWriteActivity : AppCompatActivity() {
         btnBackClick()
         btnSubmitClick()
         tvDailyDateClick()
-        rvSetAdapter()
+        setRvAdapter()
     }
 
-    private fun rvSetAdapter(){
+    private fun setRvAdapter(){
         rv_daily_write.adapter = JellyEmotionAdapter()
         rv_daily_write.setOrientation(DSVOrientation.HORIZONTAL)
         rv_daily_write.setItemTransformer(

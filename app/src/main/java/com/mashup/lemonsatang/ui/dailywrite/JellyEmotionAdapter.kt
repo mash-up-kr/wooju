@@ -10,8 +10,18 @@ import android.widget.TextView
 
 class JellyEmotionAdapter : RecyclerView.Adapter<JellyEmotionAdapter.JellyViewHolder>() {
 
-    var emotionTexts = arrayOf("기뻐요","평온해요","화나요","행복해요","피곤해요","우울해요")
-    var jellyImages = arrayOf(R.drawable.transguility,R.drawable.transguility,R.drawable.transguility,R.drawable.transguility,R.drawable.transguility,R.drawable.transguility)
+    private var emotionTexts = arrayOf("기뻐요","평온해요","만족해요","화나요","행복해요","피곤해요","우울해요","슬퍼요")
+    //TODO 로티 파일로 수정
+    private var jellyImages = arrayOf(
+        R.drawable.transguility,
+        R.drawable.transguility,
+        R.drawable.transguility,
+        R.drawable.transguility,
+        R.drawable.transguility,
+        R.drawable.transguility,
+        R.drawable.transguility,
+        R.drawable.transguility
+        )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JellyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
