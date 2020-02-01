@@ -19,7 +19,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun clickEventCallback(position: Int) {
         startActivity(Intent(this, MonthlyListActivity::class.java).apply {
-            putExtra(CURR_MONTH_KEY, position)
+            putExtra(CURR_MONTH_KEY, position + 1)
         })
     }
 
