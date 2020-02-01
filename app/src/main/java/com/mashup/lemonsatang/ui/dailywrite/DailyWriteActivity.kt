@@ -8,6 +8,7 @@ import android.graphics.Paint.UNDERLINE_TEXT_FLAG
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.afollestad.materialdialogs.MaterialDialog
 import com.mashup.lemonsatang.ui.main.MainActivity.Companion.CURR_MONTH_KEY
 import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity.Companion.CURR_DAY_KEY
 import com.yarolegovich.discretescrollview.DSVOrientation
@@ -125,9 +126,12 @@ class DailyWriteActivity : AppCompatActivity() {
 
             //TODO 서버전송
 
-
-
-            finish()
+            val builder = MaterialDialog(this).show{
+                message (text = "작성 완료되었습니다.")
+                positiveButton (text="확인"){
+                    finish()
+                }
+            }
         }
 
     }
