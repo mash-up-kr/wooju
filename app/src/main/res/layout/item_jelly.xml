@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="150dp"
+    android:layout_width="160dp"
     android:background="@color/colorPrimaryDark"
-    android:layout_height="150dp">
-
+    android:layout_height="265dp">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_jelly_item_emotion"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:src="@drawable/transguility">
+    </androidx.appcompat.widget.AppCompatImageView>
+    <TextView
+        android:id="@+id/tv_jelly_item_emotion"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="평온해요"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center">
+    </TextView>
 
 </LinearLayout>

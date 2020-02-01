@@ -1,5 +1,6 @@
 package com.mashup.lemonsatang.ui.main
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.lemonsatang.R
