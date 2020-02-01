@@ -1,8 +1,34 @@
 <resources>
     <string name="kakao_app_key">75286db2bafd683b37cac5d33f3797be</string>
     <string name="app_name">lemonsatang</string>
-    <string name="title_date">11월 22일 수요일</string>
-
-    <!-- main_home-->
+    <string name="daily_view_title_date">11월 21일</string>
+    <string name="daily_view_content">그들은 물방아 그와 꽃이 이상이 원질이 실로 노래하며 할지라도 위하여서. 위하여, 얼음이 그들의 있는 풀이 같지 희망의 때까지 아니다. 때까지 이상은 이상 위하여서. 열락의 일월과 꽃이 든 운다. 위하여 영원히 이상이 이것이다. </string>
+    <string name="daily_write_hint">오늘 하루 어땠나요?</string>
+    <string name="daily_write_month">11월</string>
+    <string name="monthly_list_month">11월</string>
+    <string name="daily_write_title_date"><u>11월 21일 수요일</u></string>
     <string name="main_reminder">리마인더</string>
+
+    <!--remind_list-->
+    <string name="remind_list_month">%s월</string>
+
+    <!--remind_write-->
+    <string name="remind_write_content">리마인드를 해주세요:)</string>
+    <string name="remind_write_emotion_count">%d개</string>
+    <string name="remind_write_edt_btn">수정</string>
+    <string name="remind_write_del_btn">삭제</string>
+
+    <!--toolbar_remind_write-->
+    <string name="toolbar_remind_title">리마인드</string>
+    <string name="toolbar_settings_title">설정</string>
+    <string name="toolbar_remind_dialog_msg">"%1$s %2$s째주 리마인드가 완료되었어요."</string>
+
+    <!--settins-->
+    <string name="alarm_settings">알람</string>
+    <string name="license_settings">라이센스</string>
+    <string name="donate_settings">기부하기</string>
+    <string name="rate_settings">앱 평가하기</string>
+    <string name="version_settings">버전 정보</string>
+    <string name="version_num_settings">1.1.0</string>
+    <string name="logout_settings">로그아웃</string>
 </resources>
