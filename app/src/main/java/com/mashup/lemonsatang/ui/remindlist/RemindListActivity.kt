@@ -5,10 +5,9 @@ import android.os.Bundle
 import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityRemindListBinding
-import com.mashup.lemonsatang.ui.remindWrite.RemindWriteActivity
+import com.mashup.lemonsatang.ui.remindwrite.RemindWriteActivity
 import com.mashup.lemonsatang.ui.vo.RemindList
 import com.mashup.lemonsatang.ui.vo.RemindListItemVo
-import com.mashup.lemonsatang.ui.vo.RemindListResponse
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
 
 class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.activity_remind_list)

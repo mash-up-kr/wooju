@@ -9,27 +9,24 @@ import com.kakao.usermgmt.callback.MeV2ResponseCallback
 import com.kakao.usermgmt.response.MeV2Response
 import com.kakao.util.exception.KakaoException
 
-class KakaoSessionCallback(val redirect: (isLoginSuccessful: Boolean) -> Unit) : ISessionCallback {
+class KakaoSessionCallback(val redirect: () -> Unit) : ISessionCallback {
 
     override fun onSessionOpenFailed(exception: KakaoException?) {
-        exception?.let { Log.d("test", exception.toString()) }
+        Log.d("test", "onSessionOpenFailed : $exception")
     }
 
     override fun onSessionOpened() {
         UserManagement.getInstance().me(object : MeV2ResponseCallback() {
             override fun onSuccess(result: MeV2Response?) {
-                Log.d("test", "accessToken : ${Session.getCurrentSession().tokenInfo.accessToken}")
-                Log.d(
-                    "test",
-                    "refreshToken : ${Session.getCurrentSession().tokenInfo.refreshToken}"
-                )
+                val session = Session.getCurrentSession()
+                Log.d("test", "accessToken : ${session.tokenInfo.accessToken}")
+                Log.d("test", "refreshToken : ${session.tokenInfo.refreshToken}")
 
-                redirect(true)
+                redirect()
             }
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
                 Log.d("test", "onSessionClosed.")
-                redirect(false)
             }
         })
     }

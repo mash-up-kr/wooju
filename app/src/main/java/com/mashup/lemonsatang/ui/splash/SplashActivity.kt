@@ -14,26 +14,35 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        Handler().postDelayed({
-            redirectActivity()
-        }, REDIRECT_DURATION)
+        initMotionLayout()
+        checkUserLoginAndRedirect()
     }
 
-    private fun redirectActivity() {
-        val intent = when (Session.getCurrentSession().isOpenable) {
+    private fun initMotionLayout(){
+        binding.motionlayout.transitionToEnd()
+    }
+
+    private fun checkUserLoginAndRedirect() {
+        val intent = when (checkUserLogin()) {
             true -> Intent(this, MainActivity::class.java)
             false -> Intent(this, LoginActivity::class.java)
         }
 
-        redirectActivityWithIntent(intent)
+        redirectWithDelay(intent)
     }
 
-    private fun redirectActivityWithIntent(intent: Intent) {
-        Thread.sleep(REDIRECT_DURATION)
+    // 사용자가 이전에 앱 사용시 어떤 로그인 연동을 했는지 로컬에 데이터 가지고 있어야함
+    // 해당 데이터를 가지고 각 플랫폼별 자동로그인 로직구현 필요
+    private fun checkUserLogin(): Boolean {
+        // 카카오톡 로그인
+        return !Session.getCurrentSession().isClosed
+    }
 
-        startActivity(intent)
-        finish()
+    private fun redirectWithDelay(intent: Intent) {
+        Handler().postDelayed({
+            startActivity(intent)
+            finish()
+        }, REDIRECT_DURATION)
     }
 
     companion object {

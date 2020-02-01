@@ -1,4 +1,4 @@
-package com.mashup.lemonsatang.ui.remindWrite
+package com.mashup.lemonsatang.ui.remindwrite
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,6 @@ import com.mashup.lemonsatang.ui.remindlist.RemindDate
 import com.mashup.lemonsatang.ui.remindlist.RemindListActivity
 import kotlinx.android.synthetic.main.activity_remind_write_content.*
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
-import org.jetbrains.anko.toast
 
 class RemindWriteContentActivity : AppCompatActivity(), RemindDate{
 
