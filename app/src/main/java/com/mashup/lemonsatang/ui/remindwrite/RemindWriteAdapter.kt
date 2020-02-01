@@ -1,4 +1,4 @@
-package com.mashup.lemonsatang.ui.remindWrite
+package com.mashup.lemonsatang.ui.remindwrite
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

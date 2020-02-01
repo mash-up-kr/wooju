@@ -1,4 +1,4 @@
-package com.mashup.lemonsatang.ui.remindWrite
+package com.mashup.lemonsatang.ui.remindwrite
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +14,6 @@ import com.mashup.lemonsatang.ui.vo.*
 import kotlinx.android.synthetic.main.activity_remind_write.*
 import kotlinx.android.synthetic.main.bottom_sheet_remind_write.*
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
-import org.jetbrains.anko.toast
 
 class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.activity_remind_write) {
 
