@@ -1,5 +1,6 @@
 package com.mashup.lemonsatang.base
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.Toast
@@ -28,6 +29,7 @@ abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId
         }
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     private fun setOrientationToPortrait() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
