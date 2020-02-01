@@ -15,21 +15,21 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initView()
+//        initView()
         initEvent()
         initKakaoLogin()
     }
 
-    private fun initView() {
-        showLottieAnimation()
-    }
+//    private fun initView() {
+//        showLottieAnimation()
+//    }
 
-    private fun showLottieAnimation() {
-        with(binding.lottieLogin) {
-            repeatCount = LottieDrawable.INFINITE
-            playAnimation()
-        }
-    }
+//    private fun showLottieAnimation() {
+//        with(binding.lottieLogin) {
+//            repeatCount = LottieDrawable.INFINITE
+//            playAnimation()
+//        }
+//    }
 
     private fun initEvent(){
         binding.btKakao.setOnClickListener {
