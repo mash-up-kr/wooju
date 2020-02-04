@@ -3,14 +3,13 @@ package com.mashup.lemonsatang.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
+import com.airbnb.lottie.LottieDrawable
 import com.kakao.auth.Session
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseActivity
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivitySplashBinding
 import com.mashup.lemonsatang.ui.login.LoginActivity
 import com.mashup.lemonsatang.ui.main.MainActivity
-import com.mashup.lemonsatang.util.getHashKey
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
@@ -18,11 +17,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         super.onCreate(savedInstanceState)
         initMotionLayout()
         checkUserLoginAndRedirect()
-        Log.d("test", "hash: ${getHashKey(this)}")
     }
 
     private fun initMotionLayout(){
         binding.motionlayout.transitionToEnd()
+//        binding.ivSplash.repeatCount = LottieDrawable.INFINITE
+//        binding.ivSplash.playAnimation()
     }
 
     private fun checkUserLoginAndRedirect() {

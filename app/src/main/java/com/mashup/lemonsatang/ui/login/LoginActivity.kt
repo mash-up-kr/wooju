@@ -2,10 +2,9 @@ package com.mashup.lemonsatang.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import com.airbnb.lottie.LottieDrawable
 import com.kakao.auth.Session
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseActivity
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityLoginBinding
 import com.mashup.lemonsatang.ui.main.MainActivity
 

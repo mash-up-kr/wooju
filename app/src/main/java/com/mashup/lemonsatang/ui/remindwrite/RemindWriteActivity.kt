@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseActivity
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityRemindWriteBinding
 import com.mashup.lemonsatang.ui.remindlist.RemindListActivity
 import com.mashup.lemonsatang.ui.vo.*

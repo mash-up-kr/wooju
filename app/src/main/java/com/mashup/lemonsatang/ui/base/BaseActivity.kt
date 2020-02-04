@@ -1,4 +1,4 @@
-package com.mashup.lemonsatang.base
+package com.mashup.lemonsatang.ui.base
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo

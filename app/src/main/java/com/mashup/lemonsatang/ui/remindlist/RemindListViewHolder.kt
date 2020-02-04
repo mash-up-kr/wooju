@@ -2,11 +2,10 @@ package com.mashup.lemonsatang.ui.remindlist
 
 import android.graphics.drawable.GradientDrawable
 import android.util.SparseIntArray
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseViewHolder
+import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemRemindListBinding
 import com.mashup.lemonsatang.ui.vo.RemindListItemVo
 import kotlinx.android.synthetic.main.item_remind_list.view.*

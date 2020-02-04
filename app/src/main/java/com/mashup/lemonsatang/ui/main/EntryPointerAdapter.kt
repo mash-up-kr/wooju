@@ -1,17 +1,17 @@
 package com.mashup.lemonsatang.ui.main
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseViewHolder
+import com.mashup.lemonsatang.data.vo.HomeDataResponse
+import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemMonthSummaryBinding
 
 class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
     RecyclerView.Adapter<EntryPointerAdapter.EntryPointerViewHolder>() {
-    private val data = mutableListOf<String>()
+    private val data = mutableListOf<HomeDataResponse.Year>()
 
-    fun setData(newData: List<String>?) {
+    fun setData(newData: List<HomeDataResponse.Year>?) {
         if (newData != null) {
             data.clear()
             data.addAll(newData)
@@ -37,8 +37,8 @@ class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
             binding.ivCalendar.setOnClickListener { clickEvent(adapterPosition) }
         }
 
-        fun bind(item: String) {
-            binding.tvCalendar.text = item
+        fun bind(item: HomeDataResponse.Year) {
+            binding.tvCalendar.text = item.month.toString() + "월"
         }
     }
 }

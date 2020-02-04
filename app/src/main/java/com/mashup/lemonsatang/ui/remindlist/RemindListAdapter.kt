@@ -3,7 +3,7 @@ package com.mashup.lemonsatang.ui.remindlist
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseViewHolder
+import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemBlankRemindListBinding
 import com.mashup.lemonsatang.databinding.ItemMonthRemindListBinding
 import com.mashup.lemonsatang.ui.vo.RemindListItemVo
