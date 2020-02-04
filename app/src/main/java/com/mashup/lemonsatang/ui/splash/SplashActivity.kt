@@ -21,8 +21,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     private fun initMotionLayout(){
         binding.motionlayout.transitionToEnd()
-        binding.ivSplash.repeatCount = LottieDrawable.INFINITE
-        binding.ivSplash.playAnimation()
+//        binding.ivSplash.repeatCount = LottieDrawable.INFINITE
+//        binding.ivSplash.playAnimation()
     }
 
     private fun checkUserLoginAndRedirect() {
