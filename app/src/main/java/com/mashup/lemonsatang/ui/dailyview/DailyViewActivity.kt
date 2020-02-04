@@ -8,11 +8,15 @@ import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityDailyViewBinding
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
+import com.mashup.lemonsatang.ui.main.MainActivity.Companion.CURR_MONTH_KEY
+import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity.Companion.CURR_DAY_KEY
 import kotlinx.android.synthetic.main.activity_daily_view.*
 import kotlinx.android.synthetic.main.bottom_sheet_daily_edit.*
-import org.jetbrains.anko.toast
 
 class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activity_daily_view) {
+
+    private var day:Int? = null
+    private var month:Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +25,16 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
     }
 
     private fun init(){
+        setToolbarDate()
         clickBtnEdit()
         clickBtnBack()
+    }
+
+    private fun setToolbarDate(){
+        day = intent.getIntExtra(CURR_DAY_KEY,-1) //MonthlyListActivity 에서 넘어온 일
+        month = intent.getIntExtra(CURR_MONTH_KEY,-1)  //MonthlyListActivity 에서 넘어온 월
+
+        daily_view_date.text = "${month}월 ${day}일"
     }
 
     private fun clickBtnEdit(){
@@ -30,18 +42,19 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
             val dialogView = layoutInflater.inflate(R.layout.bottom_sheet_daily_edit, null)
             val dialog = BottomSheetDialog(this)
             dialog.setContentView(dialogView)
-            bottomDialogClick(dialog)
+            clickBottomDialog(dialog)
             dialog.show()
         }
     }
 
-    private fun bottomDialogClick(dialog: BottomSheetDialog){
+    private fun clickBottomDialog(dialog: BottomSheetDialog){
         val btnEdit = dialog.btn_daily_view_edit
         val btnDelete = dialog.btn_daily_view_delete
 
         btnEdit.setOnClickListener {
             var intent = Intent(this, DailyWriteActivity::class.java)
-            intent.putExtra("daily_date","20191122") //날짜를 넘김
+            intent.putExtra(CURR_MONTH_KEY, month) //날짜를 넘김
+            intent.putExtra(CURR_DAY_KEY, day)
             startActivity(intent)
         }
         btnDelete.setOnClickListener {
