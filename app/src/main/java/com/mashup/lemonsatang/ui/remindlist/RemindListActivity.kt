@@ -3,7 +3,7 @@ package com.mashup.lemonsatang.ui.remindlist
 import android.content.Intent
 import android.os.Bundle
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseActivity
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityRemindListBinding
 import com.mashup.lemonsatang.ui.remindwrite.RemindWriteActivity
 import com.mashup.lemonsatang.ui.vo.RemindList

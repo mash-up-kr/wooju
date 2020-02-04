@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseActivity
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityMainBinding
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity

@@ -2,25 +2,43 @@ package com.mashup.lemonsatang
 
 import android.app.Application
 import com.kakao.auth.KakaoSDK
+import com.mashup.lemonsatang.di.networkModule
+import com.mashup.lemonsatang.di.repositoryModule
+import com.mashup.lemonsatang.di.viewModelModule
 import com.mashup.lemonsatang.util.KakaoSdkAdapter
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 
 class MonndayApplication : Application() {
 
+    private val moduleList = listOf(repositoryModule, networkModule, viewModelModule)
+
     override fun onCreate() {
         super.onCreate()
+        INSTANCE = this
 
-        instance = this
-        // Kakao Sdk 초기화
+        initKoin()
+        initKakaoSdk()
+    }
+
+    private fun initKoin(){
+        startKoin {
+            androidContext(this@MonndayApplication)
+            modules(moduleList)
+        }
+    }
+
+    private fun initKakaoSdk(){
         KakaoSDK.init(KakaoSdkAdapter())
     }
 
     companion object {
-        private var instance: MonndayApplication? = null
+        private var INSTANCE: MonndayApplication? = null
 
         fun getMonndayApplicationContext(): MonndayApplication? {
-            checkNotNull(instance) { "This Application does not inherit com.kakao.GlobalApplication" }
-            return instance
+            checkNotNull(INSTANCE) { "This Application does not inherit com.kakao.GlobalApplication" }
+            return INSTANCE
         }
     }
 }

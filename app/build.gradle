@@ -104,7 +104,7 @@ dependencies {
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
 
     // lottie
-    implementation "com.airbnb.android:lottie:3.0.0"
+    implementation "com.airbnb.android:lottie:3.3.1"
 
     // kakao login
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION

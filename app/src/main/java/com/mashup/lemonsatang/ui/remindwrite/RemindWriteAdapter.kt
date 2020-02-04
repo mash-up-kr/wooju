@@ -3,7 +3,7 @@ package com.mashup.lemonsatang.ui.remindwrite
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseViewHolder
+import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemFirstRemindWriteBinding
 import com.mashup.lemonsatang.databinding.ItemSecondRemindWriteBinding
 import com.mashup.lemonsatang.databinding.ItemThirdRemindWriteBinding

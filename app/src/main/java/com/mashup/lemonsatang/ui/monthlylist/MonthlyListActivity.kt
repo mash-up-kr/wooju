@@ -3,11 +3,10 @@ package com.mashup.lemonsatang.ui.monthlylist
 import android.content.Intent
 import android.os.Bundle
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseActivity
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityMonthlyListBinding
 import com.mashup.lemonsatang.ui.dailyview.DailyViewActivity
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
-import com.mashup.lemonsatang.ui.main.EntryPointerAdapter
 import com.mashup.lemonsatang.ui.main.MainActivity
 import com.mashup.lemonsatang.ui.vo.MonthlyListItemVo
 import kotlinx.android.synthetic.main.activity_monthly_list.*

@@ -1,10 +1,9 @@
 package com.mashup.lemonsatang.ui.main
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseViewHolder
+import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemMonthSummaryBinding
 
 class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :

@@ -5,12 +5,11 @@ import android.os.Bundle
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.base.BaseActivity
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivityDailyViewBinding
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import kotlinx.android.synthetic.main.activity_daily_view.*
 import kotlinx.android.synthetic.main.bottom_sheet_daily_edit.*
-import org.jetbrains.anko.toast
 
 class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activity_daily_view) {
 
