@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.bottom_sheet_daily_edit.*
 
 class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activity_daily_view) {
 
+    private var day:Int? = null
+    private var month:Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,8 +31,8 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
     }
 
     private fun setToolbarDate(){
-        var day = intent.getIntExtra(CURR_DAY_KEY,-1) //MonthlyListActivity 에서 넘어온 일
-        var month = intent.getIntExtra(CURR_MONTH_KEY,-1)  //MonthlyListActivity 에서 넘어온 월
+        day = intent.getIntExtra(CURR_DAY_KEY,-1) //MonthlyListActivity 에서 넘어온 일
+        month = intent.getIntExtra(CURR_MONTH_KEY,-1)  //MonthlyListActivity 에서 넘어온 월
 
         daily_view_date.text = "${month}월 ${day}일"
     }
@@ -50,7 +53,8 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
 
         btnEdit.setOnClickListener {
             var intent = Intent(this, DailyWriteActivity::class.java)
-            intent.putExtra("daily_date","20191122") //날짜를 넘김
+            intent.putExtra(CURR_MONTH_KEY, month) //날짜를 넘김
+            intent.putExtra(CURR_DAY_KEY, day)
             startActivity(intent)
         }
         btnDelete.setOnClickListener {
