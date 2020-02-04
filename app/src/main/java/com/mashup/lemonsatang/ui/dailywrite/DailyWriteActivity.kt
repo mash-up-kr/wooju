@@ -1,24 +1,20 @@
 package com.mashup.lemonsatang.ui.dailywrite
 
 import android.annotation.TargetApi
-import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_daily_write.*
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.graphics.Paint
-import android.os.Build
-import android.util.Log
-import java.util.*
-import java.text.SimpleDateFormat
+import android.content.Intent
 import android.graphics.Paint.UNDERLINE_TEXT_FLAG
-import android.widget.TextView
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.os.Build
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.afollestad.materialdialogs.MaterialDialog
+import com.mashup.lemonsatang.ui.main.MainActivity.Companion.CURR_MONTH_KEY
+import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity.Companion.CURR_DAY_KEY
 import com.yarolegovich.discretescrollview.DSVOrientation
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
+import kotlinx.android.synthetic.main.activity_daily_write.*
+import java.util.*
 
 
 class DailyWriteActivity : AppCompatActivity() {
@@ -36,6 +32,25 @@ class DailyWriteActivity : AppCompatActivity() {
         clickBtnSubmit()
         clickTvDailyDate()
         setRvAdapter()
+        setInitialDate()
+    }
+
+    private fun setInitialDate(){
+        var year = 2019 //임시
+        var month = intent.getIntExtra(CURR_MONTH_KEY,-1)
+        var day = intent.getIntExtra(CURR_DAY_KEY,-1)
+
+        setToolbarAndDailyDate(year,month,day)
+    }
+
+    private fun setToolbarAndDailyDate(year : Int, month : Int, day : Int){
+        //toolbar month 설정
+        tv_daily_write_month.text = "${month}월"
+
+        //daily date 설정
+        tv_daily_date.text = "${month}월 ${day}일 ${convertToDayOfWeek(year,month-1,day)}요일"
+
+        tv_daily_date.paintFlags = tv_daily_date.paintFlags or UNDERLINE_TEXT_FLAG
     }
 
     private fun setRvAdapter(){
@@ -54,12 +69,7 @@ class DailyWriteActivity : AppCompatActivity() {
 
         tv_daily_date.setOnClickListener {
             DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, day ->
-                var dayOfWeek = convertToDayOfWeek(year,month,day)
-
-                tv_daily_date.text = "${month + 1}월 ${day}일 ${dayOfWeek}요일"
-                tv_daily_write_month.text = "${month +1}월"
-
-                tv_daily_date.paintFlags = tv_daily_date.paintFlags or UNDERLINE_TEXT_FLAG
+                setToolbarAndDailyDate(year,month+1,day)
             },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE)).show() // TODO : 해당 날짜로 초기화
         }
     }
@@ -114,11 +124,14 @@ class DailyWriteActivity : AppCompatActivity() {
             //감정 저장
             var dailyWriteEmotion = rv_daily_write.currentItem
 
-            //서버전송
+            //TODO 서버전송
 
-
-
-            finish()
+            val builder = MaterialDialog(this).show{
+                message (text = "작성 완료되었습니다.")
+                positiveButton (text="확인"){
+                    finish()
+                }
+            }
         }
 
     }
