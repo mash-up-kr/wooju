@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="remindWriteItemThird"
+            type="com.mashup.lemonsatang.ui.vo.RemindWriteItem.Emotion" />
+    </data>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/ivEmotionRemindWriteThird"
+        android:layout_width="89dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="93dp"
+        android:background="@drawable/transguility"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{remindWriteItemThird.count}"
+        android:textColor="@color/greyscale20"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center"/>
+</LinearLayout>
+</layout>
