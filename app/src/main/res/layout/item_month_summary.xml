@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_calendar"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/blue" />
+            app:srcCompat="@drawable/transguility" />
 
         <ImageView
             android:id="@+id/iv_calendar"

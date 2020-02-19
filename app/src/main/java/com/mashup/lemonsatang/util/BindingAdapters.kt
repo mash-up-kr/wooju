@@ -9,7 +9,7 @@ fun ImageView.setMonthlyListItemSrc(isDataSet: Boolean?){
     if (isDataSet == null) return
 
     if(isDataSet){
-        setImageResource(R.drawable.group_2)
+        setImageResource(R.drawable.transguility)
     }
     else{
         setImageResource(R.drawable.rectangle_copy_13)
