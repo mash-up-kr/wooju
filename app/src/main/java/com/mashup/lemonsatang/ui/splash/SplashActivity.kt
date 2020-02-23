@@ -28,22 +28,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     private fun initMotionLayout() {
-        binding.motionlayout.setTransitionListener(object : MotionLayout.TransitionListener {
-            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
-            }
-
-            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
-
-            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
-
-            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                if (p1 == R.id.iv_end) {
-                    binding.motionlayout.setTransition(R.id.tv_start, R.id.tv_end)
-                    binding.motionlayout.transitionToEnd()
-                }
-            }
-        })
-
         binding.motionlayout.transitionToEnd()
     }
 
@@ -72,6 +56,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     companion object {
-        private const val REDIRECT_DURATION = 3500L
+        private const val REDIRECT_DURATION = 4000L
     }
 }
