@@ -3,26 +3,30 @@ package com.mashup.lemonsatang.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import com.airbnb.lottie.LottieDrawable
 import com.kakao.auth.Session
 import com.mashup.lemonsatang.R
-import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.databinding.ActivitySplashBinding
+import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.ui.login.LoginActivity
 import com.mashup.lemonsatang.ui.main.MainActivity
+import com.mashup.lemonsatang.util.setApngDrawable
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setApngDrawable()
         initMotionLayout()
         checkUserLoginAndRedirect()
     }
 
-    private fun initMotionLayout(){
+    private fun setApngDrawable(){
+        binding.ivSplash.setApngDrawable(R.raw.monnday_happiness)
+    }
+
+    private fun initMotionLayout() {
         binding.motionlayout.transitionToEnd()
-//        binding.ivSplash.repeatCount = LottieDrawable.INFINITE
-//        binding.ivSplash.playAnimation()
     }
 
     private fun checkUserLoginAndRedirect() {
@@ -49,6 +53,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     companion object {
-        private const val REDIRECT_DURATION = 1500L
+        private const val REDIRECT_DURATION = 4500L
     }
 }

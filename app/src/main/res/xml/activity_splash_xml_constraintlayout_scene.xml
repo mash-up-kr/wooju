@@ -14,8 +14,8 @@
     <ConstraintSet android:id="@+id/start">
         <Constraint
             android:id="@+id/iv_splash"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -37,8 +37,8 @@
     <ConstraintSet android:id="@+id/end">
        <Constraint
             android:id="@+id/iv_splash"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+           android:layout_width="300dp"
+           android:layout_height="300dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"

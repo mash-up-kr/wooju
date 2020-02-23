@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.mashup.lemonsatang.util.showToast
 
 abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId: Int) :
     AppCompatActivity() {
@@ -21,12 +22,6 @@ abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId
         binding.lifecycleOwner = this
 
         setOrientationToPortrait()
-    }
-
-    protected fun showToastMessage(msg: String?) {
-        if (!msg.isNullOrEmpty()) {
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-        }
     }
 
     @SuppressLint("SourceLockedOrientationActivity")
