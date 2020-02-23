@@ -35,6 +35,7 @@ class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.acti
         const val REMIND_ID = "REMIND_ID"
         const val START_DATE = "START_DATE"
         const val REMIND_LIST_REQUSET = 200
+
         var isBlank : Boolean = false
     }
 
@@ -114,6 +115,7 @@ class RemindListActivity : BaseActivity<ActivityRemindListBinding>(R.layout.acti
         }
         remindListListAdapter.setData(item)
     }
+
 
     private fun addMonth(it : ArrayList<RemindList>,i : Int)=
         item.add(RemindListItem(null,1,getMonth(it[i+1].start),null, null, null, null))

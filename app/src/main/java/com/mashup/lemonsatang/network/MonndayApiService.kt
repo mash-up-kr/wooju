@@ -4,6 +4,7 @@ import com.mashup.lemonsatang.data.vo.Article
 import com.mashup.lemonsatang.data.vo.HomeDataResponse
 import com.mashup.lemonsatang.data.vo.RemindDetailResponse
 import com.mashup.lemonsatang.data.vo.RemindListResponse
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -62,5 +63,6 @@ interface MonndayApiService {
     fun getRemindDetail(
         @Query("remindId") remindId: Int
     ) : Call<RemindDetailResponse>
+
 
 }

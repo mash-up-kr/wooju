@@ -5,6 +5,7 @@ import com.mashup.lemonsatang.data.vo.Article
 import com.mashup.lemonsatang.data.vo.HomeDataResponse
 import com.mashup.lemonsatang.data.vo.RemindDetailResponse
 import com.mashup.lemonsatang.data.vo.RemindListResponse
+
 import retrofit2.Call
 
 class MonndayRepositoryImpl(private val remoteDataSource: MonndayRemoteDataSource) :
@@ -104,4 +105,5 @@ class MonndayRepositoryImpl(private val remoteDataSource: MonndayRemoteDataSourc
     ) {
         remoteDataSource.getRemindDetail(remindId, onSuccess, onFail)
     }
+
 }

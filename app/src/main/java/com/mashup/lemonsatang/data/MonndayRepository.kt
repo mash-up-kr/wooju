@@ -55,7 +55,7 @@ interface MonndayRepository {
         onSuccess: () -> Unit,
         onFail: (errorMsg: String) -> Unit
     )
-
+  
     // Remind controller
     fun getRemind(
         onSuccess: (remindListResponse: RemindListResponse) -> Unit,

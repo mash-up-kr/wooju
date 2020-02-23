@@ -71,6 +71,7 @@ class RemindWriteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     class RemindWriteThirdViewHolder(parent: ViewGroup) :
+
         BaseViewHolder<ItemThirdRemindWriteBinding>(R.layout.item_third_remind_write, parent){
 
         fun bind(item: RemindWriteItem.Emotion){

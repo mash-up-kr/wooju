@@ -252,5 +252,4 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
             }
         }
     }
-
 }

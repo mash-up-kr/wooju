@@ -4,6 +4,7 @@
         <variable
             name="remindWriteItemSecond"
             type="com.mashup.lemonsatang.ui.vo.RemindWriteItem.Emotion" />
+
     </data>
 <LinearLayout
     android:orientation="vertical"
