@@ -173,7 +173,7 @@ class MonndayRemoteDataSourceImpl(private val monndayApiService: MonndayApiServi
                 override fun onResponse(call: Call<RemindListResponse>, response: Response<RemindListResponse>) {
                     when(response.isSuccessful){
                         true-> response.body()?.let { onSuccess(it) }
-                        false-> onFail(response.errorBody().toString())
+                        false -> onFail(response.toString())
                     }
                 }
             })
@@ -195,7 +195,7 @@ class MonndayRemoteDataSourceImpl(private val monndayApiService: MonndayApiServi
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                     when(response.isSuccessful){
                         true -> response.body()?.let { onSuccess() }
-                        false -> onFail (response.errorBody().toString())
+                        false -> onFail(response.toString())
                     }
                 }
             })
@@ -217,7 +217,7 @@ class MonndayRemoteDataSourceImpl(private val monndayApiService: MonndayApiServi
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                     when(response.isSuccessful){
                         true -> response.body()?.let { onSuccess() }
-                        false -> onFail (response.errorBody().toString())
+                        false -> onFail(response.toString())
                     }
                 }
             })
@@ -240,7 +240,7 @@ class MonndayRemoteDataSourceImpl(private val monndayApiService: MonndayApiServi
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                     when(response.isSuccessful){
                         true-> response.body()?.let { onSuccess() }
-                        false-> onFail(response.errorBody().toString())
+                        false -> onFail(response.toString())
                     }
                 }
             })
@@ -264,7 +264,7 @@ class MonndayRemoteDataSourceImpl(private val monndayApiService: MonndayApiServi
                 ) {
                     when(response.isSuccessful){
                         true-> response.body()?.let { onSuccess(it)  }
-                        false-> onFail(response.errorBody().toString())
+                        false -> onFail(response.toString())
                     }
                 }
             })

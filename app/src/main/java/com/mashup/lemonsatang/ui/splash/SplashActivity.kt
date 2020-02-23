@@ -3,29 +3,47 @@ package com.mashup.lemonsatang.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import androidx.constraintlayout.motion.widget.MotionLayout
 import com.kakao.auth.Session
+import com.linecorp.apng.ApngDrawable
 import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.databinding.ActivitySplashBinding
 import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.ui.login.LoginActivity
 import com.mashup.lemonsatang.ui.main.MainActivity
-import com.mashup.lemonsatang.util.setApngDrawable
+import com.mashup.lemonsatang.util.setEmotionApngDrawable
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setApngDrawable()
+        setSplashImage()
         initMotionLayout()
         checkUserLoginAndRedirect()
     }
 
-    private fun setApngDrawable(){
-        binding.ivSplash.setApngDrawable(R.raw.monnday_happiness)
+    private fun setSplashImage() {
+        binding.ivSplash.setEmotionApngDrawable(2)
     }
 
     private fun initMotionLayout() {
+        binding.motionlayout.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
+            }
+
+            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
+
+            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
+
+            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+                if (p1 == R.id.iv_end) {
+                    binding.motionlayout.setTransition(R.id.tv_start, R.id.tv_end)
+                    binding.motionlayout.transitionToEnd()
+                }
+            }
+        })
+
         binding.motionlayout.transitionToEnd()
     }
 
@@ -47,12 +65,13 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     private fun redirectWithDelay(intent: Intent) {
         Handler().postDelayed({
+            (binding.ivSplash.drawable as ApngDrawable).stop()
             startActivity(intent)
             finish()
         }, REDIRECT_DURATION)
     }
 
     companion object {
-        private const val REDIRECT_DURATION = 4500L
+        private const val REDIRECT_DURATION = 3500L
     }
 }

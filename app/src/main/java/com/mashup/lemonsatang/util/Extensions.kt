@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import com.linecorp.apng.ApngDrawable
+import com.mashup.lemonsatang.R
 import java.util.*
 
 fun Context.showToast(msg: String) {
@@ -17,11 +18,22 @@ fun Context.showToast(msg: String) {
             toast.cancel()
         }
     }
-    timer.schedule(timerTask, 1000)
+    timer.schedule(timerTask, 2000)
 }
 
-fun ImageView.setApngDrawable(@RawRes @DrawableRes resId: Int) {
-    val drawable = ApngDrawable.decode(resources, resId)
+fun ImageView.setEmotionApngDrawable(emotionId: Int) {
+    val apngDrawable = when(emotionId){
+        0 -> R.raw.monnday_pleasure
+        1 -> R.raw.monnday_happiness
+        2 -> R.raw.monnday_tranquility
+        3 -> R.raw.monnday_satisfaction
+        4 -> R.raw.monnday_aggro
+        5 -> R.raw.monnday_depressed
+        6 -> R.raw.monnday_tired
+        else -> R.raw.monnday_sadness
+    }
+
+    val drawable = ApngDrawable.decode(resources, apngDrawable)
     drawable.start()
     setImageDrawable(drawable)
 }
