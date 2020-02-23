@@ -4,7 +4,7 @@
     <data>
         <variable
             name="remindListItemMonth"
-            type="com.mashup.lemonsatang.ui.vo.RemindListItemVo" />
+            type="com.mashup.lemonsatang.ui.vo.RemindListItem" />
     </data>
     <LinearLayout
         android:orientation="vertical"
