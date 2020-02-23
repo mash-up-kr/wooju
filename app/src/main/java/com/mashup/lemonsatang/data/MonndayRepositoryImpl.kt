@@ -3,6 +3,9 @@ package com.mashup.lemonsatang.data
 import com.mashup.lemonsatang.data.remote.MonndayRemoteDataSource
 import com.mashup.lemonsatang.data.vo.Article
 import com.mashup.lemonsatang.data.vo.HomeDataResponse
+import com.mashup.lemonsatang.data.vo.RemindDetailResponse
+import com.mashup.lemonsatang.data.vo.RemindListResponse
+
 import retrofit2.Call
 
 class MonndayRepositoryImpl(private val remoteDataSource: MonndayRemoteDataSource) :
@@ -59,6 +62,48 @@ class MonndayRepositoryImpl(private val remoteDataSource: MonndayRemoteDataSourc
 
     override fun logout(onSuccess: () -> Unit, onFail: (errorMsg: String) -> Unit) {
         remoteDataSource.logout(onSuccess, onFail)
+    }
+
+    override fun getRemind(
+        onSuccess: (remindListResponse: RemindListResponse) -> Unit,
+        onFail: (errorMsg: String) -> Unit) {
+        remoteDataSource.getRemind(onSuccess, onFail)
+    }
+
+    override fun saveRemind(
+        command: String,
+        remindId: Int,
+        title: String?,
+        onSuccess: () -> Unit,
+        onFail: (errorMsg: String) -> Unit
+    ) {
+        remoteDataSource.saveRemind(command, remindId, title,onSuccess, onFail)
+    }
+
+    override fun updateRemind(
+        command: String,
+        remindId: Int,
+        title: String?,
+        onSuccess: () -> Unit,
+        onFail: (errorMsg: String) -> Unit
+    ) {
+        remoteDataSource.updateRemind(command, remindId, title, onSuccess, onFail)
+    }
+
+    override fun deleteRemind(
+        remindId: Int,
+        onSuccess: () -> Unit,
+        onFail: (errorMsg: String) -> Unit
+    ) {
+        remoteDataSource.deleteRemind(remindId, onSuccess, onFail)
+    }
+
+    override fun getRemindDetail(
+        remindId: Int,
+        onSuccess: (remindDetailResponse: RemindDetailResponse) -> Unit,
+        onFail: (errorMsg: String) -> Unit
+    ) {
+        remoteDataSource.getRemindDetail(remindId, onSuccess, onFail)
     }
 
 }

@@ -2,6 +2,8 @@ package com.mashup.lemonsatang.network
 
 import com.mashup.lemonsatang.data.vo.Article
 import com.mashup.lemonsatang.data.vo.HomeDataResponse
+import com.mashup.lemonsatang.data.vo.RemindDetailResponse
+import com.mashup.lemonsatang.data.vo.RemindListResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -35,5 +37,32 @@ interface MonndayApiService {
 
     @GET("/logout")
     fun logout(): Call<Unit>
+
+    // Remind controller
+    @GET("/remind")
+    fun getRemind() : Call<RemindListResponse>
+
+    @POST("/remind")
+    fun saveRemind(
+        @Query("command") command : String,
+        @Query("remindId") remindId : Int,
+        @Query("title") title : String?) : Call<Unit>
+
+    @PUT("/remind")
+    fun updateRemind(
+        @Query("command") command : String,
+        @Query("remindId") remindId : Int,
+        @Query("title") title : String?) : Call<Unit>
+
+    @DELETE("/remind")
+    fun deleteRemind(
+        @Query("remindId") remindId: Int
+    ) : Call<Unit>
+
+    @GET("/remind/detail")
+    fun getRemindDetail(
+        @Query("remindId") remindId: Int
+    ) : Call<RemindDetailResponse>
+
 
 }

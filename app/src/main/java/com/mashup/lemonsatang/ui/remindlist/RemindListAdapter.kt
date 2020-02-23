@@ -6,21 +6,21 @@ import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemBlankRemindListBinding
 import com.mashup.lemonsatang.databinding.ItemMonthRemindListBinding
-import com.mashup.lemonsatang.ui.vo.RemindListItemVo
+import com.mashup.lemonsatang.ui.vo.RemindListItem
 import java.lang.RuntimeException
 
 class RemindListAdapter(private val clickEvent : (position : Int)->Unit)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RemindDate{
 
-    private val data = ArrayList<RemindListItemVo>()
+    private val data = ArrayList<RemindListItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : RecyclerView.ViewHolder {
         return when(viewType){
-            RemindListItemVo.itemType-> RemindListViewHolder(clickEvent, parent)
+            RemindListItem.itemType-> RemindListViewHolder(clickEvent, parent)
 
-            RemindListItemVo.monthType-> RemindListMonthViewHolder(parent)
+            RemindListItem.monthType-> RemindListMonthViewHolder(parent)
 
-            RemindListItemVo.blankType-> RemindListBlankViewHolder(clickEvent,parent)
+            RemindListItem.blankType-> RemindListBlankViewHolder(clickEvent,parent)
 
             else-> throw RuntimeException("알 수 없는 뷰타입 에러")
         }
@@ -34,25 +34,25 @@ class RemindListAdapter(private val clickEvent : (position : Int)->Unit)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         data[position].let {
             when(it.type){
-                RemindListItemVo.itemType->{
+                RemindListItem.itemType->{
                     holder as RemindListViewHolder
                     it.emotionColor?.let { it1 -> holder.setColor(it1) }
                     holder.bind(it)
                 }
 
-                RemindListItemVo.monthType->{
+                RemindListItem.monthType->{
                     holder as RemindListMonthViewHolder
                     holder.bind(it) }
 
-                RemindListItemVo.blankType->{
+                RemindListItem.blankType->{
                     holder as RemindListBlankViewHolder
                     holder.bind(it)
                 }
-           }
+            }
         }
     }
 
-    fun setData(newData : ArrayList<RemindListItemVo>?){
+    fun setData(newData : ArrayList<RemindListItem>?){
         newData?.let {
             data.clear()
             data.addAll(newData)
@@ -65,7 +65,7 @@ class RemindListAdapter(private val clickEvent : (position : Int)->Unit)
     class RemindListMonthViewHolder(parent: ViewGroup) : BaseViewHolder<ItemMonthRemindListBinding>(
         R.layout.item_month_remind_list, parent) {
 
-        fun bind(item : RemindListItemVo) {
+        fun bind(item : RemindListItem) {
             binding.remindListItemMonth = item
         }
     }
@@ -77,7 +77,7 @@ class RemindListAdapter(private val clickEvent : (position : Int)->Unit)
             itemView.setOnClickListener { clickEvent(adapterPosition) }
         }
 
-        fun bind(item: RemindListItemVo){
+        fun bind(item: RemindListItem){
             binding.remindListItemBlank = item
         }
 

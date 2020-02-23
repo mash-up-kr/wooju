@@ -5,7 +5,7 @@
     <data>
         <variable
             name="remindListItem"
-            type="com.mashup.lemonsatang.ui.vo.RemindListItemVo" />
+            type="com.mashup.lemonsatang.ui.vo.RemindListItem" />
     </data>
 
         <androidx.cardview.widget.CardView
@@ -30,20 +30,21 @@
                     android:textSize="14sp"
                     android:layout_marginTop="18dp"
                     android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginEnd="18dp" />
 
                 <TextView
                     android:id="@+id/tvDateItemRemindList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{remindListItem.date}"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
                     android:layout_below="@id/tvMsgItemRemindList"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
-                    android:layout_marginBottom="18dp"/>
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{remindListItem.date}"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
 
                 <ImageView
                     android:id="@+id/ivEmotionColorRemindList"
@@ -52,9 +53,10 @@
                     android:layout_height="8dp"
                     android:layout_below="@id/tvMsgItemRemindList"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="20dp"
+                    />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 

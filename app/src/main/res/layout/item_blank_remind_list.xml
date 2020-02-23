@@ -5,7 +5,7 @@
     <data>
         <variable
             name="remindListItemBlank"
-            type="com.mashup.lemonsatang.ui.vo.RemindListItemVo" />
+            type="com.mashup.lemonsatang.ui.vo.RemindListItem" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

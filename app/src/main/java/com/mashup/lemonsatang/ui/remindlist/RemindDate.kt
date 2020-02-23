@@ -4,7 +4,7 @@ import java.util.*
 
 interface RemindDate {
 
-    private fun stringToDate(str : String) = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.getDefault()).parse(str)
+    private fun stringToDate(str : String) = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(str)
 
     private fun getFormat(d: String, f : SimpleDateFormat) = f.format(stringToDate(d))
 

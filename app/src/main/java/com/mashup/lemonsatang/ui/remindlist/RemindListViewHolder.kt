@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemRemindListBinding
-import com.mashup.lemonsatang.ui.vo.RemindListItemVo
+import com.mashup.lemonsatang.ui.vo.RemindListItem
 import kotlinx.android.synthetic.main.item_remind_list.view.*
 
 class RemindListViewHolder(
@@ -20,7 +20,7 @@ class RemindListViewHolder(
         itemView.setOnClickListener{clickEvent(adapterPosition)}
     }
 
-    fun bind(item : RemindListItemVo){
+    fun bind(item : RemindListItem){
         binding.remindListItem = item
     }
 
@@ -30,7 +30,6 @@ class RemindListViewHolder(
         val color = colorArray.get(colorArray.keyAt(colorIdx))
         val bg = itemView.ivEmotionColorRemindList.background as GradientDrawable
         bg.setColor(ContextCompat.getColor(itemView.context,color))
-
     }
 
     private fun initColorList(){
