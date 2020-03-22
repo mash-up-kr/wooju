@@ -9,6 +9,10 @@ import com.mashup.lemonsatang.databinding.ItemSecondRemindWriteBinding
 import com.mashup.lemonsatang.databinding.ItemThirdRemindWriteBinding
 import java.lang.RuntimeException
 import com.mashup.lemonsatang.ui.vo.RemindWriteItem
+import com.mashup.lemonsatang.util.setEmotionApngDrawable
+import kotlinx.android.synthetic.main.item_first_remind_write.view.*
+import kotlinx.android.synthetic.main.item_second_remind_write.view.*
+import kotlinx.android.synthetic.main.item_third_remind_write.view.*
 
 class RemindWriteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -32,14 +36,17 @@ class RemindWriteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             when(it.type){
                 RemindWriteItem.first->{
                     holder as RemindWriteFirstViewHolder
+                    holder.setEmotionImage(it.emotion)
                     holder.bind(it)
                 }
                 RemindWriteItem.second->{
                     holder as RemindWriteSecondViewHolder
+                    holder.setEmotionImage(it.emotion)
                     holder.bind(it)
                 }
                 RemindWriteItem.third->{
                     holder as RemindWriteThirdViewHolder
+                    holder.setEmotionImage(it.emotion)
                     holder.bind(it)
                 }
             }
@@ -60,6 +67,10 @@ class RemindWriteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(item : RemindWriteItem.Emotion){
             binding.remindWriteItemFirst = item
         }
+
+        fun setEmotionImage(emotionId : Int){
+            itemView.ivEmotionRemindWriteFirst.setEmotionApngDrawable(emotionId)
+        }
     }
 
     class RemindWriteSecondViewHolder(parent: ViewGroup):
@@ -67,6 +78,10 @@ class RemindWriteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: RemindWriteItem.Emotion){
             binding.remindWriteItemSecond = item
+        }
+
+        fun setEmotionImage(emotionId : Int){
+            itemView.ivEmotionRemindWriteSecond.setEmotionApngDrawable(emotionId)
         }
     }
 
@@ -76,6 +91,10 @@ class RemindWriteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: RemindWriteItem.Emotion){
             binding.remindWriteItemThird = item
+        }
+
+        fun setEmotionImage(emotionId : Int){
+            itemView.ivEmotionRemindWriteThird.setEmotionApngDrawable(emotionId)
         }
     }
 }
