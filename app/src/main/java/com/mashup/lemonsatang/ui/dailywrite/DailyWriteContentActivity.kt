@@ -1,15 +1,11 @@
 package com.mashup.lemonsatang.ui.dailywrite
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.afollestad.materialdialogs.MaterialDialog
 import com.mashup.lemonsatang.R
-import kotlinx.android.synthetic.main.activity_daily_write.*
 import kotlinx.android.synthetic.main.activity_daily_write_content.*
-import kotlinx.android.synthetic.main.activity_daily_write_content.et_daily_content
-import kotlinx.android.synthetic.main.activity_daily_write_content.tv_submit
 
 class DailyWriteContentActivity : AppCompatActivity() {
 
@@ -21,8 +17,13 @@ class DailyWriteContentActivity : AppCompatActivity() {
     }
 
     private fun init(){
+        initDailyContent()
         clickBtnSubmit()
         clickBtnBack()
+    }
+
+    private fun initDailyContent(){
+        et_daily_content.setText(intent.getStringExtra("dailyContent"))
     }
 
     private fun clickBtnSubmit(){
@@ -30,7 +31,7 @@ class DailyWriteContentActivity : AppCompatActivity() {
             var intent = Intent(this, DailyWriteActivity::class.java)
             var dailyContent = et_daily_content.text.toString()
 
-            val builder = MaterialDialog(this).show{
+            MaterialDialog(this).show{
                 message (text = "작성 완료되었습니다.")
                 positiveButton (text="확인"){
                     intent.putExtra("daily_write_content",dailyContent)

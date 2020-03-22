@@ -1,27 +1,17 @@
 package com.mashup.lemonsatang.ui.dailywrite
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.mashup.lemonsatang.R
-import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.mashup.lemonsatang.R
+import com.mashup.lemonsatang.util.setEmotionApngDrawable
 
 class JellyEmotionAdapter : RecyclerView.Adapter<JellyEmotionAdapter.JellyViewHolder>() {
 
-    private var emotionTexts = arrayOf("기뻐요","평온해요","만족해요","화나요","행복해요","피곤해요","우울해요","슬퍼요")
-    //TODO 로티 파일로 수정
-    private var jellyImages = arrayOf(
-        R.drawable.transguility,
-        R.drawable.transguility,
-        R.drawable.transguility,
-        R.drawable.transguility,
-        R.drawable.transguility,
-        R.drawable.transguility,
-        R.drawable.transguility,
-        R.drawable.transguility
-        )
+    private val emotionTexts = arrayOf("기뻐요","행복해요","평온해요","만족해요","화나요","우울해요","피곤해요","슬퍼요")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JellyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -34,7 +24,7 @@ class JellyEmotionAdapter : RecyclerView.Adapter<JellyEmotionAdapter.JellyViewHo
     }
 
     override fun onBindViewHolder(holder: JellyViewHolder, position: Int) {
-        holder.jellyImageView!!.setImageResource(jellyImages!![position])
+        holder.jellyImageView!!.setEmotionApngDrawable(position)
         holder.emotionTextView!!.text = emotionTexts!![position]
     }
 
