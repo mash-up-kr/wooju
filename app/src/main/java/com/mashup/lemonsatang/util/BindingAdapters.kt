@@ -5,11 +5,11 @@ import androidx.databinding.BindingAdapter
 import com.mashup.lemonsatang.R
 
 @BindingAdapter("setMonthlyListItemSrc")
-fun ImageView.setMonthlyListItemSrc(isDataSet: Boolean?) {
-    if (isDataSet == null) return
+fun ImageView.setMonthlyListItemSrc(emotionId: Int) {
+    if (emotionId == null) return
 
-    when (isDataSet) {
-        true -> setImageResource(R.drawable.transguility)
-        false -> setImageResource(R.drawable.rectangle_copy_13)
+    when (emotionId) {
+        -1 -> setImageResource(R.drawable.rectangle_copy_13)
+        else -> setEmotionApngDrawable(emotionId)
     }
 }

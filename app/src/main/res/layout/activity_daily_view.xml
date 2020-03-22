@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/daily_view_toolbar"/>
 
         <TextView
-            android:id="@+id/et_daily_content"
+            android:id="@+id/tv_daily_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:ems="10"
