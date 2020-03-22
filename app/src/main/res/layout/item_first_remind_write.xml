@@ -14,8 +14,7 @@
         <ImageView
             android:id="@+id/ivEmotionRemindWriteFirst"
             android:layout_width="178dp"
-            android:layout_height="188dp"
-            android:background="@drawable/transguility"/>
+            android:layout_height="188dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

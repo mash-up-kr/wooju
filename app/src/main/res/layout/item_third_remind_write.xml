@@ -15,8 +15,7 @@
         android:id="@+id/ivEmotionRemindWriteThird"
         android:layout_width="89dp"
         android:layout_height="95dp"
-        android:layout_marginTop="93dp"
-        android:background="@drawable/transguility"/>
+        android:layout_marginTop="93dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
