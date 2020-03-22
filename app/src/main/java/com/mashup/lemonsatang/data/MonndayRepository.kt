@@ -4,7 +4,6 @@ import com.mashup.lemonsatang.data.vo.Article
 import com.mashup.lemonsatang.data.vo.HomeDataResponse
 import com.mashup.lemonsatang.data.vo.RemindDetailResponse
 import com.mashup.lemonsatang.data.vo.RemindListResponse
-import retrofit2.Call
 
 interface MonndayRepository {
 

@@ -32,8 +32,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private var currMonth = Calendar.getInstance(Locale.KOREA).get(Calendar.MONTH)
 
     private fun clickEventCallback(position: Int) {
+
         startActivity(Intent(this, MonthlyListActivity::class.java).apply {
             putExtra(CURR_MONTH_KEY, position + 1)
+            putExtra(CURR_YEAR_KEY, binding.spinnerDate.selectedItem.toString().toInt())
         })
     }
 
