@@ -92,7 +92,7 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
                 message (text = "정말 삭제하시겠습니까?")
                 negativeButton (text = "아니오")
                 positiveButton (text = "삭제"){
-                    deleteArticle() // 서버에서 데이터 삭제
+                    deleteArticle(dialog) // 서버에서 데이터 삭제
                     dialog.dismiss()
                     finish()
                 }
@@ -100,9 +100,7 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
         }
     }
 
-    private fun deleteArticle(){
-        //TODO 문서에 /deleteArticle/{dailyLogId} 로 패쓰로 넘기라고 되어있는데 swagger test 에서는 /deleteArticle 로 요청함 -> 확인필요
-        // dailyLogId를 패쓰로 넘길경우 404 error 쿼리로 넘길경우 500 error
+    private fun deleteArticle(dialog: BottomSheetDialog){
         repository.deleteDailyArticle(dailylogId,{},{
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })

@@ -50,7 +50,7 @@ class DailyWriteActivity : AppCompatActivity() {
 
     private fun initializeData(){
         setInitialDate() //날짜 초기화
-        if(intent.getStringExtra("dailyContent")!=null){// DailyViewActivity 에서 edit 버튼을 눌러 들어온 경우
+        if(intent.getIntExtra("dailylogId",-1) != -1){// DailyViewActivity 에서 edit 버튼을 눌러 들어온 경우
             et_daily_content.setText(intent.getStringExtra("dailyContent")) // 기록 내용 초기화
             rv_daily_write.layoutManager!!.scrollToPosition(intent.getIntExtra("emotionId",0)) // 감정 초기화
             isEdit=true
@@ -140,6 +140,13 @@ class DailyWriteActivity : AppCompatActivity() {
     private fun clickBtnSubmit(){
 
         btn_submit.setOnClickListener {
+            if(et_daily_content.text.isNullOrEmpty()){
+                MaterialDialog(this).show{
+                    message (text = "오늘의 감정을 작성해주세요.")
+                    positiveButton (text="확인")
+                }
+                return@setOnClickListener
+            }
 
             postOrPutData()
 

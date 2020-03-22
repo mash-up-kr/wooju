@@ -54,13 +54,13 @@ class MonthlyListActivity :
 
     private fun init(){
         initRecyclerView()
-        //loadData()
+        loadData()
         clickBtnBack()
         setToolbarMonth()
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         loadData()
     }
 
@@ -80,7 +80,6 @@ class MonthlyListActivity :
         binding.rvMonthlyList.adapter = monthlyListAdapter
     }
 
-    //테스트 데이터 삽입
     private fun loadData(){
 
         val list = mutableListOf<MonthlyListItemVo>()
@@ -91,7 +90,7 @@ class MonthlyListActivity :
                 if (year.month == intent.getIntExtra(CURR_MONTH_KEY, -1)) {
                     // 해당 월의 감정 리스트만 가져온다.
                     year.emotionList?.forEach { emotion ->
-                        existEmotionIdArray[emotion.day] = emotion.emotion // emotion iD 저장
+                        existEmotionIdArray[emotion.day] = emotion.emotion // 최근 emotion iD 저장
                     }
 
                     for (i in 1..endOfMonth(intent.getIntExtra(CURR_YEAR_KEY, -1), year.month)) {
@@ -99,6 +98,7 @@ class MonthlyListActivity :
                             list.add(MonthlyListItemVo(i, -1,false))
                         } else {
                             list.add(MonthlyListItemVo(i, existEmotionIdArray[i], true))
+                            println("감정아이디"+existEmotionIdArray[14]) //
                         }
                     }
                 }
