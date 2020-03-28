@@ -9,7 +9,7 @@ import com.mashup.lemonsatang.databinding.ItemSecondRemindWriteBinding
 import com.mashup.lemonsatang.databinding.ItemThirdRemindWriteBinding
 import java.lang.RuntimeException
 import com.mashup.lemonsatang.ui.vo.RemindWriteItem
-import com.mashup.lemonsatang.util.setEmotionApngDrawable
+import com.mashup.lemonsatang.util.extension.setEmotionApngDrawable
 import kotlinx.android.synthetic.main.item_first_remind_write.view.*
 import kotlinx.android.synthetic.main.item_second_remind_write.view.*
 import kotlinx.android.synthetic.main.item_third_remind_write.view.*

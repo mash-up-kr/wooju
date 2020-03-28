@@ -10,12 +10,20 @@
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_monnday"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_monnday"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <service
+            android:name=".service.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name=".ui.splash.SplashActivity"
@@ -38,16 +46,22 @@
         <activity android:name=".ui.dailyview.DailyViewActivity" />
         <activity android:name=".ui.monthlylist.MonthlyListActivity" />
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.dailywrite.DailyWriteContentActivity" />
+        <activity
+            android:name=".ui.dailywrite.DailyWriteContentActivity"
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity android:name=".ui.dailywrite.DailyWriteActivity" />
         <activity android:name=".ui.remindwrite.RemindWriteActivity" />
-        <activity android:name=".ui.remindwrite.RemindWriteContentActivity" />
+        <activity
+            android:name=".ui.remindwrite.RemindWriteContentActivity"
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity android:name=".ui.settings.SettingsActivity" />
+        <activity android:name="com.mashup.lemonsatang.ui.settings.license.LicenseActivity" />
 
         <!-- kakao metadata -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
+
     </application>
 
 </manifest>

@@ -7,22 +7,6 @@
         motion:constraintSetStart="@id/start"
         motion:duration="3000">
 
-        <KeyFrameSet>
-            <KeyPosition
-                motion:framePosition="40"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="parent"
-                motion:motionTarget="@id/iv_splash" />
-
-            <KeyAttribute
-                android:alpha="0"
-                motion:framePosition="40"
-                motion:motionTarget="@id/tv_title" />
-
-        </KeyFrameSet>
-
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -30,8 +14,10 @@
             android:id="@+id/iv_splash"
             android:layout_width="300dp"
             android:layout_height="300dp"
+            android:alpha="0"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintVertical_bias="0.46" />
 
@@ -53,6 +39,7 @@
             android:id="@+id/iv_splash"
             android:layout_width="300dp"
             android:layout_height="300dp"
+            android:alpha="1"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"

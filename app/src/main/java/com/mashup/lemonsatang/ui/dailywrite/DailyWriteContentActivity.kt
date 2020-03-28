@@ -23,22 +23,34 @@ class DailyWriteContentActivity : AppCompatActivity() {
     }
 
     private fun initDailyContent(){
-        et_daily_content.setText(intent.getStringExtra("dailyContent"))
+        et_daily_content.apply {
+            val content = intent.getStringExtra("dailyContent") ?: ""
+            if (!content.isBlank()) {
+                setText(content)
+                setSelection(text.toString().length)
+            }
+
+            requestFocus()
+        }
     }
 
     private fun clickBtnSubmit(){
         tv_submit.setOnClickListener {
-            var intent = Intent(this, DailyWriteActivity::class.java)
-            var dailyContent = et_daily_content.text.toString()
-
-            MaterialDialog(this).show{
-                message (text = "작성 완료되었습니다.")
-                positiveButton (text="확인"){
-                    intent.putExtra("daily_write_content",dailyContent)
-                    setResult(RESULT_OK,intent)
-                    finish()
-                }
+            var intent = Intent().apply {
+                var dailyContent = et_daily_content.text.toString()
+                putExtra("daily_write_content",dailyContent)
             }
+            setResult(RESULT_OK,intent)
+            finish()
+
+//            MaterialDialog(this).show{
+//                message (text = "작성 완료되었습니다.")
+//                positiveButton (text="확인"){
+//                    intent.putExtra("daily_write_content",dailyContent)
+//                    setResult(RESULT_OK,intent)
+//                    finish()
+//                }
+//            }
         }
     }
 

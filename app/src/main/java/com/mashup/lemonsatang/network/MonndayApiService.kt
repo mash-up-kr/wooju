@@ -31,10 +31,10 @@ interface MonndayApiService {
     fun getHomeData(@Query("year") year: Int): Call<HomeDataResponse>
 
     // login controller
-    @GET("/login")
-    fun login(@Query("pushToken") pushToken: String): Call<Unit>
+    @POST("/login")
+    fun login(@Body pushToken: String): Call<Unit>
 
-    @GET("/logout")
+    @POST("/logout")
     fun logout(): Call<Unit>
 
     // Remind controller
@@ -62,6 +62,5 @@ interface MonndayApiService {
     fun getRemindDetail(
         @Query("remindId") remindId: Int
     ) : Call<RemindDetailResponse>
-
 
 }
