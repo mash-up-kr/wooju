@@ -14,7 +14,7 @@ import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import com.mashup.lemonsatang.ui.main.MainActivity.Companion.CURR_MONTH_KEY
 import com.mashup.lemonsatang.ui.main.MainActivity.Companion.CURR_YEAR_KEY
 import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity.Companion.CURR_DAY_KEY
-import com.mashup.lemonsatang.util.setEmotionApngDrawable
+import com.mashup.lemonsatang.util.extension.setEmotionApngDrawable
 import kotlinx.android.synthetic.main.activity_daily_view.*
 import kotlinx.android.synthetic.main.bottom_sheet_daily_edit.*
 import org.koin.android.ext.android.inject
@@ -77,15 +77,16 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
         val btnDelete = dialog.btn_daily_view_delete
 
         btnEdit.setOnClickListener {
-            var intent = Intent(this, DailyWriteActivity::class.java)
-            intent.putExtra(CURR_MONTH_KEY, month) //날짜를 넘김
-            intent.putExtra(CURR_DAY_KEY, day)
-            intent.putExtra(CURR_YEAR_KEY, year)
-            intent.putExtra("emotionId",emotionId) // 감정 넘김
-            intent.putExtra("dailyContent", tv_daily_content.text.toString()) //내용 넘김
-            intent.putExtra("dailylogId",dailylogId) // 아티클 아이디 넘김
-
+            var intent = Intent(this, DailyWriteActivity::class.java).apply {
+                putExtra(CURR_MONTH_KEY, month) //날짜를 넘김
+                putExtra(CURR_DAY_KEY, day)
+                putExtra(CURR_YEAR_KEY, year)
+                putExtra("emotionId", emotionId) // 감정 넘김
+                putExtra("dailyContent", tv_daily_content.text.toString()) //내용 넘김
+                putExtra("dailylogId", dailylogId) // 아티클 아이디 넘김
+            }
             startActivityForResult(intent,1)
+            dialog.dismiss()
         }
         btnDelete.setOnClickListener {
             MaterialDialog(this).show{
@@ -101,8 +102,6 @@ class DailyViewActivity : BaseActivity<ActivityDailyViewBinding>(R.layout.activi
     }
 
     private fun deleteArticle(){
-        //TODO 문서에 /deleteArticle/{dailyLogId} 로 패쓰로 넘기라고 되어있는데 swagger test 에서는 /deleteArticle 로 요청함 -> 확인필요
-        // dailyLogId를 패쓰로 넘길경우 404 error 쿼리로 넘길경우 500 error
         repository.deleteDailyArticle(dailylogId,{},{
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })

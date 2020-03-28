@@ -1,11 +1,45 @@
 <resources>
+    <style name="CustomAboutLibrariesStyle" parent="">
+            <!-- AboutLibraries specific values -->
+            <item name="aboutLibrariesWindowBackground">?android:colorBackground</item>
+            <item name="aboutLibrariesCardBackground">?cardBackgroundColor</item>
+            <item name="aboutLibrariesDescriptionTitle">@color/white</item>
+            <item name="aboutLibrariesDescriptionText">@color/white</item>
+            <item name="aboutLibrariesDescriptionDivider">@color/opensource_divider</item>
+            <item name="aboutLibrariesOpenSourceTitle">?android:textColorPrimary</item>
+            <item name="aboutLibrariesOpenSourceText">?android:textColorSecondary</item>
+            <item name="aboutLibrariesSpecialButtonText">?android:textColorPrimary</item>
+            <item name="aboutLibrariesOpenSourceDivider">@color/opensource_divider</item>
+    </style>
 
-<!-- Base application theme. -->
-<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-</style>
+    <!-- Custom font style 일괄적용 -->
+    <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/jua_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="ButtonStyle" parent="@android:style/Widget.DeviceDefault.Button">
+        <item name="android:fontFamily">@font/jua_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="EditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/jua_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Widget.Monnday.Main.Year" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="fontFamily">@font/jua_family</item>
+    </style>
+
+    <style name="Widget.Monnday.Main.Year.Drop.Down" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="fontFamily">@font/jua_family</item>
+    </style>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.mashup.lemonsatang
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import com.kakao.auth.KakaoSDK
 import com.mashup.lemonsatang.di.networkModule
 import com.mashup.lemonsatang.di.repositoryModule
@@ -20,6 +21,7 @@ class MonndayApplication : Application() {
 
         initKoin()
         initKakaoSdk()
+        initFirebaseApp()
     }
 
     private fun initKoin(){
@@ -31,6 +33,10 @@ class MonndayApplication : Application() {
 
     private fun initKakaoSdk(){
         KakaoSDK.init(KakaoSdkAdapter())
+    }
+
+    private fun initFirebaseApp(){
+        FirebaseApp.initializeApp(this)
     }
 
     companion object {

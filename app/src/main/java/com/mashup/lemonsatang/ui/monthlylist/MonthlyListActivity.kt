@@ -3,6 +3,7 @@ package com.mashup.lemonsatang.ui.monthlylist
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.data.MonndayRepository
 import com.mashup.lemonsatang.databinding.ActivityMonthlyListBinding
 import com.mashup.lemonsatang.ui.base.BaseActivity
@@ -17,9 +18,11 @@ import java.util.*
 
 
 class MonthlyListActivity :
-    BaseActivity<ActivityMonthlyListBinding>(com.mashup.lemonsatang.R.layout.activity_monthly_list) {
+    BaseActivity<ActivityMonthlyListBinding>(R.layout.activity_monthly_list) {
 
-    private val repository : MonndayRepository by inject()
+    private val repository: MonndayRepository by inject()
+    private var currYear = 0
+    private var currMonth = 0
 
     private val monthlyListAdapter by lazy {
         MonthlyListAdapter { clickEventCallback(it) }
@@ -32,16 +35,16 @@ class MonthlyListActivity :
         // 있으면 daily_edit 화면으로
         // 없으면 daily_write 화면으로 이동한다.
         // 현재는 임시로 isDataSet 의 boolean 값으로 로직 설계
-        when(currData.isDataSet){
+        when (currData.isDataSet) {
             true -> startActivity(Intent(this, DailyViewActivity::class.java).apply {
-                putExtra(CURR_YEAR_KEY, intent.getIntExtra(CURR_YEAR_KEY,-1))
-                putExtra(CURR_DAY_KEY, position+1)
-                putExtra(CURR_MONTH_KEY,intent.getIntExtra(CURR_MONTH_KEY,-1))
-            })
-            false -> startActivity(Intent(this, DailyWriteActivity::class.java).apply{
-                putExtra(CURR_YEAR_KEY, intent.getIntExtra(CURR_YEAR_KEY,-1))
+                putExtra(CURR_YEAR_KEY, currYear)
                 putExtra(CURR_DAY_KEY, position + 1)
-                putExtra(CURR_MONTH_KEY,intent.getIntExtra(CURR_MONTH_KEY,-1))
+                putExtra(CURR_MONTH_KEY, currMonth)
+            })
+            false -> startActivity(Intent(this, DailyWriteActivity::class.java).apply {
+                putExtra(CURR_YEAR_KEY, currYear)
+                putExtra(CURR_DAY_KEY, position + 1)
+                putExtra(CURR_MONTH_KEY, currMonth)
             })
         }
     }
@@ -49,27 +52,28 @@ class MonthlyListActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        currYear = intent.getIntExtra(CURR_YEAR_KEY, -1)
+        currMonth = intent.getIntExtra(CURR_MONTH_KEY, -1)
+
         init()
     }
 
-    private fun init(){
+    private fun init() {
         initRecyclerView()
-        //loadData()
         clickBtnBack()
         setToolbarMonth()
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         loadData()
     }
 
-    private fun setToolbarMonth(){
-        var month = intent.getIntExtra(CURR_MONTH_KEY,-1)
-        tv_monthly_list_month.text = "${month}월"
+    private fun setToolbarMonth() {
+        tv_monthly_list_month.text = "${currMonth}월"
     }
 
-    private fun clickBtnBack(){
+    private fun clickBtnBack() {
         btn_monthly_list_back.setOnClickListener {
             onBackPressed()
         }
@@ -77,44 +81,55 @@ class MonthlyListActivity :
 
 
     private fun initRecyclerView() {
-        binding.rvMonthlyList.adapter = monthlyListAdapter
+        binding.rvMonthlyList.apply {
+            adapter = monthlyListAdapter
+            layoutManager = MyGridLayoutManager(this@MonthlyListActivity, 100F)
+        }
     }
 
     //테스트 데이터 삽입
-    private fun loadData(){
+    private fun loadData() {
+        val endOfMonth = endOfMonth(currYear, currMonth)
 
         val list = mutableListOf<MonthlyListItemVo>()
-        var existEmotionIdArray = Array(32) { -1 } //index 날짜에 해당하는 emotionId array
+        var existEmotionIdArray =
+            arrayOfNulls<List<Int>>(endOfMonth) //index 날짜에 해당하는 emotionId array
 
-        repository.getHomeData(intent.getIntExtra(CURR_YEAR_KEY,-1), {
+        repository.getHomeData(currYear, {
             it.year?.forEach { year ->
-                if (year.month == intent.getIntExtra(CURR_MONTH_KEY, -1)) {
+                if (year.month == currMonth) {
                     // 해당 월의 감정 리스트만 가져온다.
                     year.emotionList?.forEach { emotion ->
-                        existEmotionIdArray[emotion.day] = emotion.emotion // emotion iD 저장
+                        val arrIndex = emotion.day - 1
+                        when (existEmotionIdArray[arrIndex] == null) {
+                            true -> existEmotionIdArray[arrIndex] = listOf(emotion.emotion)
+                            false -> existEmotionIdArray[arrIndex] =
+                                existEmotionIdArray[arrIndex]!!.toMutableList()
+                                    .apply { add(emotion.emotion) }
+                        } // emotion Id 저장
                     }
 
-                    for (i in 1..endOfMonth(intent.getIntExtra(CURR_YEAR_KEY, -1), year.month)) {
-                        if (existEmotionIdArray[i] == -1) {
-                            list.add(MonthlyListItemVo(i, -1,false))
+                    for (i in 1..endOfMonth) {
+                        if (existEmotionIdArray[i-1] == null) {
+                            list.add(MonthlyListItemVo(i, -1, false))
                         } else {
-                            list.add(MonthlyListItemVo(i, existEmotionIdArray[i], true))
+                            list.add(MonthlyListItemVo(i, existEmotionIdArray[i-1]!!.last(), true))
                         }
                     }
                 }
             }
 
             monthlyListAdapter.setData(list)
-        },{
+        }, {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
     }
 
     //매월 마지막 날짜 구하기
-    private fun endOfMonth(year:Int,month:Int): Int {
+    private fun endOfMonth(year: Int, month: Int): Int {
         //val dateFormat = SimpleDateFormat("yyyy-MM")
         val cal = Calendar.getInstance()
-        cal.set(year, month - 1,1)
+        cal.set(year, month - 1, 1)
 
         return cal.getActualMaximum(Calendar.DAY_OF_MONTH)
     }

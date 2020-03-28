@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="30000">
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:rotation="-10"
+                motion:framePosition="5"
+                motion:motionTarget="@id/iv_login" />
+
+            <KeyAttribute
+                android:rotation="-15"
+                motion:framePosition="10"
+                motion:motionTarget="@id/iv_login" />
+
+            <KeyAttribute
+                android:rotation="-5"
+                motion:framePosition="20"
+                motion:motionTarget="@id/iv_login" />
+
+
+            <KeyAttribute
+                android:rotation="-15"
+                motion:framePosition="30"
+                motion:motionTarget="@id/iv_login" />
+
+
+            <KeyAttribute
+                android:rotation="-5"
+                motion:framePosition="40"
+                motion:motionTarget="@id/iv_login" />
+
+            <KeyAttribute
+                android:rotation="-15"
+                motion:framePosition="50"
+                motion:motionTarget="@id/iv_login" />
+
+            <KeyAttribute
+                android:rotation="-5"
+                motion:framePosition="60"
+                motion:motionTarget="@id/iv_login" />
+
+
+            <KeyAttribute
+                android:rotation="-15"
+                motion:framePosition="70"
+                motion:motionTarget="@id/iv_login" />
+
+
+            <KeyAttribute
+                android:rotation="-5"
+                motion:framePosition="80"
+                motion:motionTarget="@id/iv_login" />
+
+            <KeyAttribute
+                android:rotation="-15"
+                motion:framePosition="90"
+                motion:motionTarget="@id/iv_login" />
+
+            <KeyAttribute
+                android:rotation="-5"
+                motion:framePosition="95"
+                motion:motionTarget="@id/iv_login" />
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/iv_login"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/image_happy"
+            motion:layout_constraintVertical_bias="0.43"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/iv_login"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/image_happy"
+            motion:layout_constraintVertical_bias="0.43"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+    </ConstraintSet>
+
+</MotionScene>

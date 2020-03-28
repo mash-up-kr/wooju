@@ -6,7 +6,7 @@ data class HomeDataResponse(
     data class Year(
         val emotionList: List<Emotion>?,
         val month: Int,
-        val mostEmotion: Int
+        val mostEmotion: Int?
     )
 
     data class Emotion(

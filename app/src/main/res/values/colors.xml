@@ -2,14 +2,12 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#000000</color>
+    <color name="colorSecondary">#ffffff</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 
-    <color name="tranguility">#00ff63</color>
-    <color name="tired">#bcbcbc</color>
-    <color name="sadness">#3000ff</color>
     <color name="greyscale100">#131415</color>
     <color name="greyscae90">#2a2b2c</color>
     <color name="greyscale80">#424344</color>
@@ -21,11 +19,15 @@
     <color name="greyscale20">#e7e7e7</color>
     <color name="greyscale10">#f3f3f3</color>
     <color name="greyscale0">#fafafa</color>
+
     <color name="happiness">#ffde00</color>
     <color name="pleasure">#ff5200</color>
     <color name="satisfaction">#ff008e</color>
     <color name="angro">#ff0000</color>
     <color name="depressed">#7b00ff</color>
+    <color name="tranguility">#00ff63</color>
+    <color name="tired">#bcbcbc</color>
+    <color name="sadness">#3000ff</color>
 
 
 </resources>

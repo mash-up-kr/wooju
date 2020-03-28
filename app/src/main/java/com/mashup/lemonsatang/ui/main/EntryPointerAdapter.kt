@@ -1,15 +1,15 @@
 package com.mashup.lemonsatang.ui.main
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.lemonsatang.R
 import com.mashup.lemonsatang.data.vo.HomeDataResponse
-import com.mashup.lemonsatang.ui.base.BaseViewHolder
 import com.mashup.lemonsatang.databinding.ItemMonthSummaryBinding
-import com.mashup.lemonsatang.util.setEmotionApngDrawable
+import com.mashup.lemonsatang.ui.base.BaseViewHolder
+import com.mashup.lemonsatang.util.extension.setEmotionApngDrawable
 
-class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
-    RecyclerView.Adapter<EntryPointerAdapter.EntryPointerViewHolder>() {
+class EntryPointerAdapter : RecyclerView.Adapter<EntryPointerAdapter.EntryPointerViewHolder>() {
     private val data = mutableListOf<HomeDataResponse.Year>()
 
     fun setData(newData: List<HomeDataResponse.Year>?) {
@@ -21,7 +21,7 @@ class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryPointerViewHolder =
-        EntryPointerViewHolder(clickEvent, parent)
+        EntryPointerViewHolder(parent)
 
     override fun getItemCount(): Int = data.size
 
@@ -29,18 +29,29 @@ class EntryPointerAdapter(private val clickEvent: (position: Int) -> Unit) :
         holder.bind(data[position])
 
     class EntryPointerViewHolder(
-        private val clickEvent: (position: Int) -> Unit,
         parent: ViewGroup
-    ) :
-        BaseViewHolder<ItemMonthSummaryBinding>(R.layout.item_month_summary, parent) {
-
-        init {
-            binding.ivCalendar.setOnClickListener { clickEvent(adapterPosition) }
-        }
+    ) : BaseViewHolder<ItemMonthSummaryBinding>(R.layout.item_month_summary, parent) {
 
         fun bind(item: HomeDataResponse.Year) {
-            binding.tvCalendar.text = item.month.toString() + "월"
-            binding.ivEmotion.setEmotionApngDrawable(item.mostEmotion)
+            when(item.mostEmotion == null){
+                true -> showEmptyView()
+                false -> showMostEmotionImage(item.mostEmotion)
+            }
+        }
+
+        private fun showEmptyView(){
+            with(binding){
+                tvEmpty.visibility = View.VISIBLE
+                ivEmotion.visibility = View.INVISIBLE
+            }
+        }
+
+        private fun showMostEmotionImage(mostEmotionId : Int){
+            with(binding){
+                tvEmpty.visibility = View.INVISIBLE
+                ivEmotion.visibility = View.VISIBLE
+                binding.ivEmotion.setEmotionApngDrawable(mostEmotionId)
+            }
         }
     }
 }

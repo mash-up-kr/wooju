@@ -12,8 +12,8 @@ class MonthlyListAdapter(private val clickEvent: (position: Int) -> Unit) :
 
     private val data = mutableListOf<MonthlyListItemVo>()
 
-    fun setData(newData : List<MonthlyListItemVo>?){
-        if(newData != null){
+    fun setData(newData: List<MonthlyListItemVo>?) {
+        if (newData != null) {
             data.clear()
             data.addAll(newData)
             notifyDataSetChanged()
@@ -27,24 +27,23 @@ class MonthlyListAdapter(private val clickEvent: (position: Int) -> Unit) :
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: MonthlyListViewHolder, position: Int){
+    override fun onBindViewHolder(holder: MonthlyListViewHolder, position: Int) {
         holder.bind(data[position])
     }
-
 
 
     class MonthlyListViewHolder(
         private val clickEvent: (position: Int) -> Unit,
         parent: ViewGroup
-        ) :
-        BaseViewHolder<ItemMonthlyListBinding>(R.layout.item_monthly_list, parent) {
+    ) : BaseViewHolder<ItemMonthlyListBinding>(R.layout.item_monthly_list, parent) {
 
-            init{
-                itemView.setOnClickListener { clickEvent(adapterPosition) }
-            }
+        init {
+            itemView.setOnClickListener { clickEvent(adapterPosition) }
+        }
 
         fun bind(item: MonthlyListItemVo) {
             binding.item = item
+            binding.executePendingBindings()
         }
     }
 }
