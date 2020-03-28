@@ -9,7 +9,7 @@ data class RemindListResponse (
         var remindId : Int,
         @SerializedName("startDate") var start : String,
         @SerializedName("endDate") var end : String,
-        @SerializedName("command")var contents : String,
+        @SerializedName("command")var contents : String?,
         @SerializedName("bestEmotion") var emotionColor : Int?
     )
 }

@@ -2,10 +2,12 @@ package com.mashup.lemonsatang.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -14,11 +16,11 @@ import com.mashup.lemonsatang.databinding.ActivityMainBinding
 import com.mashup.lemonsatang.ui.base.BaseActivity
 import com.mashup.lemonsatang.ui.dailywrite.DailyWriteActivity
 import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity
-import com.mashup.lemonsatang.ui.monthlylist.MonthlyListActivity.Companion.CURR_DAY_KEY
 import com.mashup.lemonsatang.ui.remindlist.RemindListActivity
 import com.mashup.lemonsatang.ui.settings.SettingsActivity
 import com.mashup.lemonsatang.util.EventObserver
-import com.mashup.lemonsatang.util.showToast
+import com.mashup.lemonsatang.util.dpToPx
+import com.mashup.lemonsatang.util.extension.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -26,18 +28,11 @@ import java.util.*
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val mainViewModel: MainViewModel by viewModel()
+    private val entryPointerAdapter by lazy { EntryPointerAdapter() }
+    private val miniCalendarAdapter by lazy { MiniCalendarAdapter() }
 
-    private val entryPointerAdapter by lazy { EntryPointerAdapter { clickEventCallback(it) } }
-
+    private var currYear = Calendar.getInstance(Locale.KOREA).get(Calendar.YEAR)
     private var currMonth = Calendar.getInstance(Locale.KOREA).get(Calendar.MONTH)
-
-    private fun clickEventCallback(position: Int) {
-
-        startActivity(Intent(this, MonthlyListActivity::class.java).apply {
-            putExtra(CURR_MONTH_KEY, position + 1)
-            putExtra(CURR_YEAR_KEY, binding.spinnerDate.selectedItem.toString().toInt())
-        })
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,14 +41,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         initView()
         initEvent()
         initCallback()
-
-        val currYear = Calendar.getInstance(Locale.KOREA).get(Calendar.YEAR)
-        loadDataByYear(currYear)
     }
 
     private fun initView() {
         initRecyclerView()
-        initSpinner()
+        initSpinnerView()
     }
 
     private fun initRecyclerView() {
@@ -64,19 +56,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     super.onScrollStateChanged(recyclerView, newState)
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         currMonth =
-                            (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                            (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition() + 1
+                        mainViewModel.setCurrMonth(currMonth)
                     }
                 }
             })
 
             PagerSnapHelper().attachToRecyclerView(this)
         }
+
+        binding.rvMiniCalendar.apply {
+            adapter = miniCalendarAdapter
+            layoutManager = GridLayoutManager(this@MainActivity, 7)
+            addItemDecoration(MiniRvDecoration(dpToPx(4)))
+        }
+
     }
 
-    private fun initSpinner() {
+    private fun initSpinnerView() {
         val yearItems = resources.getStringArray(R.array.year_list)
         val spinnerAdapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, yearItems)
+            ArrayAdapter(this, R.layout.spinner_item_layout, yearItems).apply {
+                setDropDownViewResource(R.layout.spinner_item_layout_drop_down)
+            }
 
         binding.spinnerDate.apply {
             adapter = spinnerAdapter
@@ -99,15 +101,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun initEvent() {
-        binding.fabAdd.setOnClickListener {
-            startActivity(Intent(this, DailyWriteActivity::class.java).apply {
-                val calendar = Calendar.getInstance()
-                putExtra(CURR_YEAR_KEY, calendar.get(Calendar.YEAR))
-                putExtra(CURR_MONTH_KEY, calendar.get(Calendar.MONTH) + 1)
-                putExtra(CURR_DAY_KEY, calendar.get(Calendar.DATE))
-            })
-        }
-
         binding.tvSetting.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
@@ -115,20 +108,56 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.tvReminder.setOnClickListener {
             startActivity(Intent(this, RemindListActivity::class.java))
         }
+
+        binding.rvMiniCalendarClick.setOnClickListener {
+            Log.d("test", "clicked")
+            startActivity(Intent(this, MonthlyListActivity::class.java).apply {
+                putExtra(CURR_MONTH_KEY, currMonth)
+                putExtra(CURR_YEAR_KEY, binding.spinnerDate.selectedItem.toString().toInt())
+            })
+        }
+
+        binding.fabAdd.setOnClickListener {
+            startActivity(Intent(this, DailyWriteActivity::class.java).apply {
+                val calendar = Calendar.getInstance()
+                putExtra(CURR_YEAR_KEY, calendar.get(Calendar.YEAR))
+                putExtra(CURR_MONTH_KEY, calendar.get(Calendar.MONTH) + 1)
+                putExtra(MonthlyListActivity.CURR_DAY_KEY, calendar.get(Calendar.DATE))
+            })
+        }
     }
 
     private fun initCallback() {
         mainViewModel.yearList.observe(this, Observer {
             binding.rvMonthlySummary.scrollToPosition(currMonth)
+            mainViewModel.setCurrMonth(currMonth)
         })
 
         mainViewModel.currYear.observe(this, Observer { currYear ->
             binding.spinnerDate.setSelection(currYear - 2011)
+            binding.rvMonthlySummary.scrollToPosition(currMonth - 1)
+        })
+
+        mainViewModel.currMonth.observe(this, Observer {
+            currMonth = it
+        })
+
+        mainViewModel.currMonthData.observe(this, Observer {
+            miniCalendarAdapter.setData(it)
+        })
+
+        mainViewModel.isRemindAvailable.observe(this, Observer {
+            binding.tvReminder.setAlarmOn(it)
         })
 
         mainViewModel.toastMsg.observe(this, EventObserver {
             showToast(it)
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadDataByYear(currYear)
     }
 
     private fun loadDataByYear(year: Int) {

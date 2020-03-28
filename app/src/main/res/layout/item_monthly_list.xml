@@ -28,7 +28,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="fitCenter"
-                setMonthlyListItemSrc="@{item.emotionId}"/>
+                setEmotionApng="@{item.emotionId}"/>
 
             <TextView
                 android:id="@+id/tv_day"

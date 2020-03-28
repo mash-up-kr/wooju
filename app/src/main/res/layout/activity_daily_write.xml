@@ -4,63 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dailywrite.DailyWriteActivity"
-    android:background="@android:color/background_dark">
+    android:background="@android:color/background_dark"
+    tools:context=".ui.dailywrite.DailyWriteActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/daily_write_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="?actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/btn_main_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:src="@drawable/btn_main_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btn_main_back"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/btn_main_back"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true">
-            </androidx.appcompat.widget.AppCompatImageView>
+        <TextView
+            android:id="@+id/tv_daily_write_month"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="@string/daily_write_month"
+            android:textColor="@android:color/background_light"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_daily_write_month"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/daily_write_month"
-                android:textSize="22dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical"
-                android:textColor="@android:color/background_light"/>
+        <TextView
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:gravity="center_vertical"
+            android:text="완료"
+            android:textColor="@android:color/background_light"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/btn_submit"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="완료"
-                android:gravity="center_vertical"
-                android:textColor="@android:color/background_light"
-                android:textSize="20dp"
-                android:layout_marginRight="24dp"
-                android:layout_alignParentRight="true"/>
-
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.yarolegovich.discretescrollview.DiscreteScrollView
         android:id="@+id/rv_daily_write"
         android:layout_width="match_parent"
         android:layout_height="270dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daily_write_toolbar" />
 
     <TextView
@@ -83,15 +84,17 @@
         android:id="@+id/et_daily_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:ems="10"
-        android:background="#131415"
-        android:layout_marginTop="17dp"
         android:layout_marginHorizontal="24dp"
-        android:inputType="textMultiLine"
-        android:hint="@string/daily_write_hint"
-        android:textColor="#89898a"
+        android:layout_marginTop="17dp"
+        android:background="#131415"
+        android:ems="10"
         android:gravity="top"
+        android:hint="@string/daily_write_hint"
+        android:inputType="textMultiLine"
+        android:lineSpacingMultiplier="1.4"
         android:padding="20dp"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

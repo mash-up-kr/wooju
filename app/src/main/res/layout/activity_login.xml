@@ -7,10 +7,12 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/login_motion_base"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000"
+        app:layoutDescription="@xml/activity_login_scene"
         tools:context=".ui.login.LoginActivity">
 
         <TextView
@@ -19,66 +21,77 @@
             android:layout_height="wrap_content"
             android:text="Monnday"
             android:textColor="#fff"
-            android:textSize="20sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/lottie_login"
+            app:layout_constraintBottom_toTopOf="@+id/iv_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.75" />
+            app:layout_constraintVertical_bias="0.8" />
 
         <ImageView
-            android:id="@+id/lottie_login"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:id="@+id/iv_login"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:src="@drawable/image_happy"
-            app:layout_constraintBottom_toTopOf="@+id/bt_kakao"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.43" />
 
         <TextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:text="Login"
             android:textColor="#88FFFFFF"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/bt_kakao"
+            app:layout_constraintBottom_toTopOf="@+id/container_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/bt_kakao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:background="?selectableItemBackgroundBorderless"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_login"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:theme="@android:style/ThemeOverlay.Material.Dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_kakao" />
+            app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/bt_instagram"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            app:layout_constraintBottom_toBottomOf="@+id/bt_kakao"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bt_kakao"
-            app:srcCompat="@drawable/ic_instagram" />
+            <ImageView
+                android:id="@+id/bt_kakao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="48dp"
+                android:background="?selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_kakao" />
 
-        <ImageView
-            android:id="@+id/bt_facebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            app:layout_constraintBottom_toBottomOf="@+id/bt_kakao"
-            app:layout_constraintEnd_toStartOf="@+id/bt_kakao"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_facebook" />
+            <ImageView
+                android:id="@+id/bt_instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_kakao"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bt_kakao"
+                app:srcCompat="@drawable/ic_instagram" />
+
+            <ImageView
+                android:id="@+id/bt_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_kakao"
+                app:layout_constraintEnd_toStartOf="@+id/bt_kakao"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_facebook" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/view"
@@ -108,9 +121,9 @@
             android:id="@+id/kakao_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

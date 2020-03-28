@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "184524735322",
+    "firebase_url": "https://lemonsatang-c74b7.firebaseio.com",
+    "project_id": "lemonsatang-c74b7",
+    "storage_bucket": "lemonsatang-c74b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184524735322:android:aca7ac5f4a9e008b036963",
+        "android_client_info": {
+          "package_name": "com.mashup.lemonsatang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184524735322-p9ogjl3u6tp78gjhfdpru3ttu06o2qrc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mashup.lemonsatang",
+            "certificate_hash": "67659907fa3eb17a6da91071b53a152016aa32d4"
+          }
+        },
+        {
+          "client_id": "184524735322-8pdsqfn3779av3op1i5h6ihsmc240alk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB73zsC3twwEIGDnB62bFdKyLYVb8ZEHyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184524735322-8pdsqfn3779av3op1i5h6ihsmc240alk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

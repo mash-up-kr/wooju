@@ -16,6 +16,7 @@ import com.mashup.lemonsatang.databinding.ActivityRemindWriteBinding
 import com.mashup.lemonsatang.ui.remindlist.RemindDate
 import com.mashup.lemonsatang.ui.remindlist.RemindListActivity
 import com.mashup.lemonsatang.ui.vo.*
+import com.mashup.lemonsatang.util.dpToPx
 import kotlinx.android.synthetic.main.activity_remind_write.*
 import kotlinx.android.synthetic.main.bottom_sheet_remind_write.*
 import kotlinx.android.synthetic.main.toolbar_remind_list.*
@@ -55,6 +56,8 @@ class RemindWriteActivity : BaseActivity<ActivityRemindWriteBinding>(R.layout.ac
         initRecyclerView()
         intentConfig()
         btnBackClick()
+
+        binding.etContentRemindWrite.requestFocus()
     }
 
     private fun intentConfig(){
